@@ -24,3 +24,77 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* =========================================
+   ZAKWAN AI VISION SYSTEM
+   HUD ANIMATIONS
+   ========================================= */
+
+@keyframes scan {
+  0% {
+    transform: translateY(-180px);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(180px);
+    opacity: 0;
+  }
+}
+
+@keyframes detectionPulse {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.25);
+  }
+}
+
+@keyframes reticleSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes telemetryPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.vision-scan {
+  animation: scan 3.2s linear infinite;
+}
+
+.detection-box {
+  animation: detectionPulse 2s ease-in-out infinite;
+}
+
+.telemetry {
+  animation: telemetryPulse 2s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
