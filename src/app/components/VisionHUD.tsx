@@ -100,7 +100,7 @@ export default function VisionHUD() {
 
       {/* Detection box */}
       <div className="detection-box absolute left-[16%] top-[12%] h-[62%] w-[68%] border border-orange-500/90">
-        <div className="absolute -top-7 left-0 bg-orange-500 px-2 py-1 font-mono text-[10px] font-bold text-black">
+        <div className="absolute bottom-0 right-0 bg-orange-500 px-2 py-1 font-mono text-[10px] font-bold text-black">
           HUMAN // 99.8%
         </div>
 
