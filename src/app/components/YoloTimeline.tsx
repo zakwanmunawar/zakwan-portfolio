@@ -44,11 +44,8 @@ export default function YoloTimeline() {
         scrollingLeft && currentScrollLeft > 0;
 
       if (canScrollRight || canScrollLeft) {
-        // Stop the browser from moving the page vertically.
         event.preventDefault();
 
-        // Convert vertical mouse-wheel movement
-        // into horizontal timeline movement.
         container.scrollLeft += event.deltaY;
       }
     };
@@ -95,7 +92,7 @@ export default function YoloTimeline() {
 
           <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             YOLOv1
-            <span className="text-orange-500"> → </span>
+            <span className="text-blue-500"> → </span>
             YOLO26
           </h2>
 
@@ -149,7 +146,7 @@ export default function YoloTimeline() {
                     <motion.div
                       className={`h-4 w-4 rounded-full border-2 ${
                         isFirst || isLast
-                          ? "border-orange-500 bg-orange-500 shadow-[0_0_18px_rgba(249,115,22,0.5)]"
+                          ? "border-blue-500 bg-blue-500 shadow-[0_0_18px_rgba(59,130,246,0.5)]"
                           : "border-cyan-300/50 bg-[#08090a]"
                       }`}
                       whileHover={{
@@ -167,7 +164,7 @@ export default function YoloTimeline() {
                   <motion.div
                     className={`mt-8 border p-4 ${
                       isFirst || isLast
-                        ? "border-orange-500/40 bg-orange-500/[0.04]"
+                        ? "border-blue-500/40 bg-blue-500/[0.04]"
                         : "border-white/10 bg-white/[0.02] group-hover:border-cyan-300/40"
                     }`}
                     whileHover={{
@@ -201,35 +198,6 @@ export default function YoloTimeline() {
           </div>
         </div>
 
-        {/* Legend */}
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.6,
-            delay: 0.3,
-          }}
-          className="mt-6 flex flex-wrap items-center gap-6 font-mono text-[10px] text-white/40"
-        >
-          <div className="flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-orange-500" />
-            FOUNDATION / CURRENT
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full border border-cyan-300/60" />
-            EVOLUTION
-          </div>
-        </motion.div>
-
         {/* Bottom statement */}
         <motion.div
           initial={{
@@ -255,7 +223,7 @@ export default function YoloTimeline() {
             architecture evolved.
           </p>
 
-          <div className="font-mono text-xs text-orange-500">
+          <div className="font-mono text-xs text-blue-500">
             REAL-TIME OBJECT DETECTION // 2015 → 2026
           </div>
         </motion.div>

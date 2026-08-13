@@ -15,7 +15,7 @@ export default function ConnectSection() {
           <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             LET&apos;S BUILD
             <br />
-            <span className="text-orange-500">SOMETHING</span>
+            <span className="text-blue-500">SOMETHING</span>
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/50">
@@ -81,8 +81,8 @@ export default function ConnectSection() {
                     STATUS
                   </span>
 
-                  <span className="flex items-center gap-2 font-mono text-xs text-orange-500">
-                    <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  <span className="flex items-center gap-2 font-mono text-xs text-blue-500">
+                    <span className="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
                     OPEN TO OPPORTUNITIES
                   </span>
                 </div>
@@ -104,14 +104,14 @@ export default function ConnectSection() {
                   href="/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group border border-orange-500/40 bg-orange-500/[0.04] p-5 transition-all duration-300 hover:border-orange-500 hover:bg-orange-500/10"
+                  className="group border border-blue-500/40 bg-blue-500/[0.04] p-5 transition-all duration-300 hover:border-blue-500 hover:bg-blue-500/10"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-orange-500">
+                    <span className="font-mono text-xs font-bold text-blue-500">
                       RESUME
                     </span>
 
-                    <span className="font-mono text-xs text-orange-500 transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="font-mono text-xs text-blue-500 transition-transform duration-300 group-hover:translate-x-1">
                       ↗
                     </span>
                   </div>
@@ -204,7 +204,7 @@ export default function ConnectSection() {
             MOHAMMED ZAKWAN M. // COMPUTER VISION
           </p>
 
-          <p className="font-mono text-[10px] text-orange-500">
+          <p className="font-mono text-[10px] text-blue-500">
             CONNECTION_READY
           </p>
         </div>

@@ -19,7 +19,8 @@ export default function Home() {
             href="#top"
             className="font-mono text-sm font-bold tracking-tight text-white"
           >
-            <span className="mr-2 inline-block h-2 w-2 bg-orange-500" />
+            {/* 1. Small square before ZAKWAN. M */}
+            <span className="mr-2 inline-block h-2 w-2 bg-blue-500" />
             ZAKWAN. M
           </a>
 
@@ -45,9 +46,10 @@ export default function Home() {
               ABOUT
             </a>
 
+            {/* 3. CONTACT */}
             <a
               href="#contact"
-              className="bg-orange-500 px-4 py-2 font-semibold text-black transition hover:bg-orange-400"
+              className="bg-blue-500 px-4 py-2 font-semibold text-black transition hover:bg-blue-400"
             >
               CONTACT
             </a>
@@ -86,11 +88,15 @@ export default function Home() {
               MOHAMMED
               <br />
               ZAKWAN M
-              <span className="text-orange-500">.</span>
+              {/* 2. Small square/dot after Mohammed Zakwan M */}
+              <span className="text-blue-500">.</span>
             </h1>
 
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-white/60 sm:text-xl">
-              Computer Vision Engineer in training. I build{" "}
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-white sm:text-xl">
+              <span className="font-semibold text-white">
+                Computer Vision
+              </span>{" "}
+              Engineer in training. I build{" "}
               <span className="font-semibold text-white">
                 object detection systems
               </span>{" "}
@@ -112,9 +118,10 @@ export default function Home() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-4">
+              {/* 4. VIEW PROJECTS */}
               <a
                 href="#work"
-                className="bg-orange-500 px-6 py-3 font-mono text-sm font-semibold text-black transition hover:-translate-y-1 hover:bg-orange-400"
+                className="bg-blue-500 px-6 py-3 font-mono text-sm font-semibold text-black transition hover:-translate-y-1 hover:bg-blue-400"
               >
                 VIEW PROJECTS →
               </a>

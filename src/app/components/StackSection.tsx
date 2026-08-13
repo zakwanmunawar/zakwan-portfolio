@@ -86,7 +86,7 @@ export default function StackSection() {
           <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             WHAT I
             <br />
-            <span className="text-orange-500">WORK WITH</span>
+            <span className="text-blue-500">WORK WITH</span>
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/50">
@@ -128,7 +128,7 @@ export default function StackSection() {
               <div className="flex items-start justify-between">
 
                 <div>
-                  <p className="font-mono text-[10px] text-orange-500">
+                  <p className="font-mono text-[10px] text-blue-500">
                     SYSTEM_{category.number}
                   </p>
 
@@ -154,14 +154,14 @@ export default function StackSection() {
                       key={item}
                       className={`flex items-center gap-3 border-b border-white/5 pb-3 font-mono text-xs transition-colors duration-300 ${
                         isMajorModel
-                          ? "text-orange-500"
+                          ? "text-blue-500"
                           : "text-white/50 group-hover:text-white/70"
                       }`}
                     >
                       <span
                         className={`text-[9px] ${
                           isMajorModel
-                            ? "text-orange-500/70"
+                            ? "text-blue-500/70"
                             : "text-cyan-300/50"
                         }`}
                       >
@@ -171,7 +171,7 @@ export default function StackSection() {
                       <span>{item}</span>
 
                       {isMajorModel && (
-                        <span className="ml-auto text-[8px] text-orange-500/60">
+                        <span className="ml-auto text-[8px] text-blue-500/60">
                           CORE
                         </span>
                       )}
@@ -215,20 +215,20 @@ export default function StackSection() {
             duration: 0.6,
             delay: 0.2,
           }}
-          className="mt-10 border border-orange-500/20 bg-orange-500/[0.025] p-6 sm:p-8"
+          className="mt-10 border border-blue-500/20 bg-blue-500/[0.025] p-6 sm:p-8"
         >
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
             <div>
-              <p className="font-mono text-[10px] text-orange-500">
+              <p className="font-mono text-[10px] text-blue-500">
                 VISION_PIPELINE
               </p>
 
               <p className="mt-3 font-mono text-sm leading-7 text-white/60">
                 YOLOv1
-                <span className="mx-2 text-orange-500">→</span>
+                <span className="mx-2 text-blue-500">→</span>
                 YOLOv8
-                <span className="mx-2 text-orange-500">→</span>
+                <span className="mx-2 text-blue-500">→</span>
                 YOLO26
               </p>
 
@@ -251,7 +251,7 @@ export default function StackSection() {
             FOCUS: COMPUTER VISION // AI // REAL-TIME SYSTEMS
           </p>
 
-          <p className="font-mono text-xs text-orange-500">
+          <p className="font-mono text-xs text-blue-500">
             SYSTEM STATUS: ONLINE
           </p>
         </div>

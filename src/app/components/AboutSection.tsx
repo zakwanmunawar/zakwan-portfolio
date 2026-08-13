@@ -1,3 +1,34 @@
+"use client";
+
+import { motion } from "motion/react";
+
+const focusAreas = [
+  {
+    number: "01",
+    title: "COMPUTER VISION",
+    description:
+      "Object detection, tracking, image processing, and real-time vision systems.",
+  },
+  {
+    number: "02",
+    title: "DEEP LEARNING",
+    description:
+      "Understanding model architectures, training pipelines, losses, inference, and evaluation.",
+  },
+  {
+    number: "03",
+    title: "REAL-TIME SYSTEMS",
+    description:
+      "Connecting computer vision models with tracking, telemetry, alerts, and interactive interfaces.",
+  },
+  {
+    number: "04",
+    title: "SYSTEM THINKING",
+    description:
+      "Moving from individual models toward complete, practical AI applications.",
+  },
+];
+
 export default function AboutSection() {
   return (
     <section
@@ -7,7 +38,25 @@ export default function AboutSection() {
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
-        <div className="max-w-3xl">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="max-w-3xl"
+        >
           <p className="font-mono text-xs text-cyan-300">
             04 // ENGINEERING PROFILE
           </p>
@@ -15,18 +64,17 @@ export default function AboutSection() {
           <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             BUILDING
             <br />
-            <span className="text-orange-500">
+            <span className="text-blue-500">
               FROM THE INSIDE OUT
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Main content */}
         <div className="mt-20 grid gap-16 lg:grid-cols-[1.2fr_0.8fr]">
 
           {/* Story */}
           <div>
-
             <p className="max-w-3xl text-xl leading-9 text-white/70">
               I am a Computer Vision Engineer in training focused on
               building real-time AI systems and understanding the
@@ -50,82 +98,55 @@ export default function AboutSection() {
 
             {/* Focus areas */}
             <div className="mt-12 grid gap-4 sm:grid-cols-2">
+              {focusAreas.map((focus) => (
+                <motion.div
+                  key={focus.number}
+                  whileHover={{
+                    y: -5,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 24,
+                  }}
+                  className="group border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-cyan-300/30"
+                >
+                  <p className="font-mono text-[10px] text-blue-500">
+                    FOCUS_{focus.number}
+                  </p>
 
-              {/* Focus 01 */}
-              <div className="border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-cyan-300/30">
-                <p className="font-mono text-[10px] text-orange-500">
-                  FOCUS_01
-                </p>
+                  <h3 className="mt-3 font-mono text-sm font-bold">
+                    {focus.title}
+                  </h3>
 
-                <h3 className="mt-3 font-mono text-sm font-bold">
-                  COMPUTER VISION
-                </h3>
-
-                <p className="mt-2 text-xs leading-6 text-white/40">
-                  Object detection, tracking, image processing, and
-                  real-time vision systems.
-                </p>
-              </div>
-
-              {/* Focus 02 */}
-              <div className="border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-cyan-300/30">
-                <p className="font-mono text-[10px] text-orange-500">
-                  FOCUS_02
-                </p>
-
-                <h3 className="mt-3 font-mono text-sm font-bold">
-                  DEEP LEARNING
-                </h3>
-
-                <p className="mt-2 text-xs leading-6 text-white/40">
-                  Understanding model architectures, training pipelines,
-                  losses, inference, and evaluation.
-                </p>
-              </div>
-
-              {/* Focus 03 */}
-              <div className="border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-cyan-300/30">
-                <p className="font-mono text-[10px] text-orange-500">
-                  FOCUS_03
-                </p>
-
-                <h3 className="mt-3 font-mono text-sm font-bold">
-                  REAL-TIME SYSTEMS
-                </h3>
-
-                <p className="mt-2 text-xs leading-6 text-white/40">
-                  Connecting computer vision models with tracking,
-                  telemetry, alerts, and interactive interfaces.
-                </p>
-              </div>
-
-              {/* Focus 04 */}
-              <div className="border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-cyan-300/30">
-                <p className="font-mono text-[10px] text-orange-500">
-                  FOCUS_04
-                </p>
-
-                <h3 className="mt-3 font-mono text-sm font-bold">
-                  SYSTEM THINKING
-                </h3>
-
-                <p className="mt-2 text-xs leading-6 text-white/40">
-                  Moving from individual models toward complete,
-                  practical AI applications.
-                </p>
-              </div>
-
+                  <p className="mt-2 text-xs leading-6 text-white/40">
+                    {focus.description}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
 
           {/* Engineering status panel */}
-          <div className="relative border border-white/10 bg-white/[0.02] p-6 sm:p-8">
-
+          <motion.div
+            whileHover={{
+              y: -5,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 24,
+            }}
+            className="group relative border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-cyan-300/30 sm:p-8"
+          >
             {/* HUD corners */}
-            <div className="absolute left-0 top-0 h-8 w-8 border-l border-t border-cyan-300/50" />
-            <div className="absolute right-0 top-0 h-8 w-8 border-r border-t border-cyan-300/50" />
-            <div className="absolute bottom-0 left-0 h-8 w-8 border-b border-l border-cyan-300/50" />
-            <div className="absolute bottom-0 right-0 h-8 w-8 border-b border-r border-cyan-300/50" />
+            <div className="absolute left-0 top-0 h-8 w-8 border-l border-t border-cyan-300/50 transition-colors duration-300 group-hover:border-cyan-300/80" />
+
+            <div className="absolute right-0 top-0 h-8 w-8 border-r border-t border-cyan-300/50 transition-colors duration-300 group-hover:border-cyan-300/80" />
+
+            <div className="absolute bottom-0 left-0 h-8 w-8 border-b border-l border-cyan-300/50 transition-colors duration-300 group-hover:border-cyan-300/80" />
+
+            <div className="absolute bottom-0 right-0 h-8 w-8 border-b border-r border-cyan-300/50 transition-colors duration-300 group-hover:border-cyan-300/80" />
 
             <div className="font-mono text-[10px] text-cyan-300">
               ENGINEERING_PROFILE.exe
@@ -148,7 +169,7 @@ export default function AboutSection() {
                   YOLO_FOUNDATION
                 </span>
 
-                <span className="font-mono text-xs text-orange-500">
+                <span className="font-mono text-xs text-blue-500">
                   YOLOv1
                 </span>
               </div>
@@ -168,7 +189,7 @@ export default function AboutSection() {
                   MODERN_VISION
                 </span>
 
-                <span className="font-mono text-xs text-orange-500">
+                <span className="font-mono text-xs text-blue-500">
                   YOLOv8 / YOLO26
                 </span>
               </div>
@@ -198,8 +219,8 @@ export default function AboutSection() {
                   CURRENT_STATE
                 </span>
 
-                <span className="flex items-center gap-2 font-mono text-xs text-orange-500">
-                  <span className="h-2 w-2 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.7)]" />
+                <span className="flex items-center gap-2 font-mono text-xs text-blue-500">
+                  <span className="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
                   BUILDING
                 </span>
               </div>
@@ -212,8 +233,7 @@ export default function AboutSection() {
               <div>VISION_SYSTEMS: ACTIVE</div>
               <div>LEARNING_LOOP: CONTINUOUS</div>
             </div>
-
-          </div>
+          </motion.div>
         </div>
 
         {/* Closing statement */}

@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import type { MouseEvent } from "react";
 
 import Reveal from "./Reveal";
@@ -115,7 +120,6 @@ function ProjectCard({
       </div>
 
       <div className="grid gap-10 p-6 lg:grid-cols-[1.1fr_1fr] lg:p-10">
-
         {/* Project visual */}
         <ProjectVisual
           src={project.image}
@@ -125,8 +129,8 @@ function ProjectCard({
 
         {/* Project information */}
         <div className="flex flex-col justify-center">
-
-          <div className="font-mono text-xs text-orange-500">
+          {/* BLUE PROJECT NUMBER */}
+          <div className="font-mono text-xs text-blue-500">
             {project.number} / 02
           </div>
 
@@ -150,7 +154,8 @@ function ProjectCard({
                   key={highlight}
                   className="flex items-start gap-2 font-mono text-[10px] text-white/50"
                 >
-                  <span className="mt-1 h-1 w-1 shrink-0 bg-orange-500" />
+                  {/* BLUE CAPABILITY MARKER */}
+                  <span className="mt-1 h-1 w-1 shrink-0 bg-blue-500" />
                   {highlight}
                 </div>
               ))}
@@ -175,12 +180,11 @@ function ProjectCard({
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex border border-white/20 px-5 py-3 font-mono text-[10px] text-white/70 transition-all duration-300 hover:border-orange-500 hover:text-orange-500"
+              className="inline-flex border border-white/20 px-5 py-3 font-mono text-[10px] text-white/70 transition-all duration-300 hover:border-blue-500 hover:text-blue-500"
             >
               VIEW SOURCE →
             </a>
           </div>
-
         </div>
       </div>
 
@@ -197,7 +201,6 @@ export default function ProjectSection() {
       className="border-t border-white/10 px-6 py-32"
     >
       <div className="mx-auto max-w-7xl">
-
         {/* Section heading */}
         <Reveal className="max-w-3xl">
           <p className="font-mono text-xs text-cyan-300">
@@ -207,7 +210,10 @@ export default function ProjectSection() {
           <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             SYSTEMS
             <br />
-            <span className="text-orange-500">BUILT</span>
+            {/* BLUE BUILT */}
+            <span className="text-blue-500">
+              BUILT
+            </span>
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/50">
@@ -225,7 +231,6 @@ export default function ProjectSection() {
             />
           ))}
         </div>
-
       </div>
     </section>
   );

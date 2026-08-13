@@ -36,9 +36,9 @@ function VisionScene({
       target.current.rotation.z =
         state.clock.elapsedTime * 0.35;
 
-      const targetScale = 1 + Math.sin(
-        state.clock.elapsedTime * 2
-      ) * 0.05;
+      const targetScale =
+        1 +
+        Math.sin(state.clock.elapsedTime * 2) * 0.05;
 
       target.current.scale.setScalar(targetScale);
     }
@@ -60,23 +60,24 @@ function VisionScene({
         progress
       );
 
-      box.current.position.x = THREE.MathUtils.lerp(
-        box.current.position.x,
-        x,
-        0.05
-      );
+      box.current.position.x =
+        THREE.MathUtils.lerp(
+          box.current.position.x,
+          x,
+          0.05
+        );
 
-      box.current.position.y = THREE.MathUtils.lerp(
-        box.current.position.y,
-        y,
-        0.05
-      );
+      box.current.position.y =
+        THREE.MathUtils.lerp(
+          box.current.position.y,
+          y,
+          0.05
+        );
     }
   });
 
   return (
     <group ref={group}>
-
       {/* Main horizontal grid */}
       <gridHelper
         args={[8, 16, "#17343a", "#0b1c20"]}
@@ -90,7 +91,6 @@ function VisionScene({
 
       {/* Detection box */}
       <group ref={box}>
-
         <lineSegments>
           <edgesGeometry
             args={[
@@ -102,8 +102,9 @@ function VisionScene({
             ]}
           />
 
+          {/* BLUE DETECTION BOX */}
           <lineBasicMaterial
-            color="#f97316"
+            color="#3b82f6"
           />
         </lineSegments>
 
@@ -137,12 +138,10 @@ function VisionScene({
             />
           </mesh>
         ))}
-
       </group>
 
       {/* Central targeting system */}
       <group ref={target}>
-
         {/* Outer reticle */}
         <mesh>
           <torusGeometry
@@ -203,9 +202,7 @@ function VisionScene({
             color="#67e8f9"
           />
         </mesh>
-
       </group>
-
     </group>
   );
 }
@@ -348,19 +345,16 @@ export default function VisionCore3D() {
             </div>
 
             {/* Model */}
-            <div className="absolute bottom-6 right-6 font-mono text-[9px] text-orange-500">
+            <div className="absolute bottom-6 right-6 font-mono text-[9px] text-blue-500">
               YOLO26
             </div>
-
           </div>
 
           {/* State indicator */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-[0.25em] text-white/25">
             REAL-TIME VISION CORE
           </div>
-
         </div>
-
       </div>
     </section>
   );
