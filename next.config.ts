@@ -44,6 +44,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Remove the Next.js development indicator from the bottom-left.
+  devIndicators: false,
+
+  // Don't expose the X-Powered-By header.
   poweredByHeader: false,
 
   async headers() {

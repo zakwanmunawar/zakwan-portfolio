@@ -8,17 +8,18 @@ import VisionCore3D from "./components/VisionCore3D";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#08090a] text-[#e9e7e1]">
-
+    <main
+      id="top"
+      className="min-h-screen overflow-x-hidden bg-[#08090A] text-[#E9E7E1]"
+    >
       {/* Navigation */}
-      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#08090a]/90 backdrop-blur-md">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#08090A]/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-
           <a
             href="#top"
-            className="flex items-center gap-2 font-mono text-sm font-bold"
+            className="font-mono text-sm font-bold tracking-tight text-white"
           >
-            <span className="h-2 w-2 bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.7)]" />
+            <span className="mr-2 inline-block h-2 w-2 bg-orange-500" />
             ZAKWAN. M
           </a>
 
@@ -56,7 +57,7 @@ export default function Home() {
 
       {/* Hero */}
       <section
-        id="top"
+        id="hero"
         className="relative flex min-h-screen items-center overflow-hidden pt-16"
       >
         {/* Background grid */}
@@ -73,10 +74,9 @@ export default function Home() {
           }}
         />
 
-        <div className="relative mx-auto grid w-full max-w-7xl gap-16 px-6 py-32 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-
+        <div className="relative mx-auto grid min-h-screen w-full max-w-[1600px] gap-12 px-8 pb-24 pt-20 lg:grid-cols-[1fr_1fr] lg:items-start xl:px-12">
           {/* Left */}
-          <div>
+          <div className="mt-0">
             <div className="mb-6 flex items-center gap-3 font-mono text-xs text-cyan-300">
               <span className="h-px w-5 bg-cyan-300" />
               $ whoami
@@ -128,45 +128,30 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right — Interactive Vision HUD */}
-          <VisionHUD />
+          {/* Right — Vision HUD */}
+          <div className="lg:-mr-6 lg:-mt-28">
+            <VisionHUD />
+          </div>
         </div>
       </section>
 
-      {/* YOLO Timeline */}
+      {/* YOLO Evolution */}
       <YoloTimeline />
 
+      {/* Interactive 3D Vision Core */}
       <VisionCore3D />
 
-      {/* Projects */}
+      {/* Featured Projects */}
       <ProjectSection />
 
       {/* Engineering Stack */}
       <StackSection />
 
-      {/* Engineering Profile */}
+      {/* About */}
       <AboutSection />
-      
-      {/* Resume / GitHub / LinkedIn / Email */}
+
+      {/* Contact */}
       <ConnectSection />
-
-      {/* Footer */}
-      <footer className="border-t border-white/10 px-6 py-8">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 font-mono text-[10px] text-white/25 sm:flex-row">
-          <span>
-            MOHAMMED ZAKWAN M. // COMPUTER VISION
-          </span>
-
-          <span>
-            © 2026
-          </span>
-
-          <span className="text-orange-500">
-            SYSTEM_STATUS: ONLINE
-          </span>
-        </div>
-      </footer>
-
     </main>
   );
 }
