@@ -13,9 +13,9 @@ export default function VisionHUD() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Subtle movement for the HUD itself
+  // Subtle movement for the image panel
   const hudX = useSpring(
-    useTransform(mouseX, [-0.5, 0.5], [-8, 8]),
+    useTransform(mouseX, [-0.5, 0.5], [-6, 6]),
     {
       stiffness: 120,
       damping: 20,
@@ -23,27 +23,10 @@ export default function VisionHUD() {
   );
 
   const hudY = useSpring(
-    useTransform(mouseY, [-0.5, 0.5], [-8, 8]),
+    useTransform(mouseY, [-0.5, 0.5], [-6, 6]),
     {
       stiffness: 120,
       damping: 20,
-    }
-  );
-
-  // Reticle follows the cursor more noticeably
-  const reticleX = useSpring(
-    useTransform(mouseX, [-0.5, 0.5], [-22, 22]),
-    {
-      stiffness: 90,
-      damping: 18,
-    }
-  );
-
-  const reticleY = useSpring(
-    useTransform(mouseY, [-0.5, 0.5], [-22, 22]),
-    {
-      stiffness: 90,
-      damping: 18,
     }
   );
 
@@ -91,10 +74,10 @@ export default function VisionHUD() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Original cybernetic portrait */}
+      {/* Main image */}
       <Image
-        src="/images/human-ai.jpeg"
-        alt="Zakwan — human and cybernetic portrait"
+        src="/images/I'MZAK.jpeg"
+        alt="Zakwan — AI vision portrait"
         fill
         priority
         unoptimized
@@ -102,79 +85,29 @@ export default function VisionHUD() {
         className="object-cover object-center"
       />
 
-      {/* Cinematic overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-black/10" />
+      {/* Very subtle cinematic layer */}
+      <div className="pointer-events-none absolute inset-0 bg-black/5" />
 
-      {/* Subtle cyan tint */}
-      <div className="pointer-events-none absolute inset-0 bg-cyan-300/[0.025]" />
+      {/* Minimal HUD corners */}
+      <div className="pointer-events-none absolute left-4 top-4 z-20 h-6 w-6 border-l border-t border-cyan-300/70" />
 
-      {/* HUD corners */}
-      <div className="absolute left-4 top-4 z-20 h-6 w-6 border-l-2 border-t-2 border-cyan-300" />
+      <div className="pointer-events-none absolute right-4 top-4 z-20 h-6 w-6 border-r border-t border-cyan-300/70" />
 
-      <div className="absolute right-4 top-4 z-20 h-6 w-6 border-r-2 border-t-2 border-cyan-300" />
+      <div className="pointer-events-none absolute bottom-4 left-4 z-20 h-6 w-6 border-b border-l border-cyan-300/70" />
 
-      <div className="absolute bottom-4 left-4 z-20 h-6 w-6 border-b-2 border-l-2 border-cyan-300" />
+      <div className="pointer-events-none absolute bottom-4 right-4 z-20 h-6 w-6 border-b border-r border-cyan-300/70" />
 
-      <div className="absolute bottom-4 right-4 z-20 h-6 w-6 border-b-2 border-r-2 border-cyan-300" />
-
-      {/* Cursor-reactive reticle */}
-      <motion.div
-        className="absolute left-1/2 top-[42%] z-20 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/50"
-        style={{
-          x: reticleX,
-          y: reticleY,
-        }}
-      >
-        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-cyan-300/20" />
-
-        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-cyan-300/20" />
-
-        <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/70 shadow-[0_0_12px_rgba(103,232,249,0.8)]" />
-      </motion.div>
-
-      {/* Animated scan line */}
-      <motion.div
-        className="absolute left-0 right-0 z-20 h-px bg-cyan-300/80 shadow-[0_0_14px_#7fb8c4]"
-        animate={{
-          top: ["8%", "92%", "8%"],
-        }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
-      {/* Scan glow */}
-      <motion.div
-        className="absolute left-0 right-0 z-10 h-8 bg-cyan-300/[0.025]"
-        animate={{
-          top: ["5%", "89%", "5%"],
-        }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
-      {/* Telemetry */}
-      <div className="absolute bottom-5 left-6 z-20 font-mono text-[10px] leading-5 text-cyan-300">
-        
+      {/* Minimal status */}
+      <div className="absolute bottom-5 left-6 z-20 font-mono text-[9px] leading-5 text-cyan-300">
         <div>STATUS: TRACKING_TARGET</div>
-        
-      </div>
-
-      {/* Model label */}
-      <div className="absolute right-5 top-5 z-20 border border-cyan-300/30 bg-black/70 px-3 py-2 font-mono text-[9px] text-cyan-300">
-        CV_SYSTEM
-        <br />
-        
+        <div className="text-cyan-300/50">
+          VISION_SYSTEM: ACTIVE
+        </div>
       </div>
 
       {/* Live indicator */}
-      <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2 font-mono text-[9px] text-white/60">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-orange-500" />
+      <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2 font-mono text-[9px] text-white/70">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.7)]" />
         LIVE VISION
       </div>
     </motion.div>

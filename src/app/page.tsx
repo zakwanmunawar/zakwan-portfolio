@@ -19,9 +19,9 @@ export default function Home() {
             href="#top"
             className="font-mono text-sm font-bold tracking-tight text-white"
           >
-            {/* 1. Small square before ZAKWAN. M */}
+            {/* 1. Small square before ZAKWAN*/}
             <span className="mr-2 inline-block h-2 w-2 bg-blue-500" />
-            ZAKWAN. M
+            ZAKWAN
           </a>
 
           <div className="hidden items-center gap-8 font-mono text-xs text-white/50 md:flex">
