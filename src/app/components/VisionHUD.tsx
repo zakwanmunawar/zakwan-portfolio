@@ -76,7 +76,7 @@ export default function VisionHUD() {
     >
       {/* Main image */}
       <Image
-        src="/images/I'MZAK.jpeg"
+        src="/images/human-ai.jpeg"
         alt="Zakwan — AI vision portrait"
         fill
         priority
