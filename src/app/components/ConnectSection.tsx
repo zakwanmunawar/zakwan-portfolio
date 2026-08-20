@@ -101,7 +101,7 @@ export default function ConnectSection() {
 
                 {/* Resume */}
                 <a
-                  href="/resume.pdf"
+                  href="/zak's_resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group border border-blue-500/40 bg-blue-500/[0.04] p-5 transition-all duration-300 hover:border-blue-500 hover:bg-blue-500/10"
