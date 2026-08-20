@@ -93,15 +93,19 @@ export default function Home() {
             </h1>
 
             <p className="mt-8 max-w-2xl text-lg leading-8 text-white sm:text-xl">
-              <span className="font-semibold text-white">
-                Computer Vision
-              </span>{" "}
-              Engineer in training. I build{" "}
-              <span className="font-semibold text-white">
-                object detection systems
-              </span>{" "}
-              and explore how modern vision models work from the inside out.
-            </p>
+  <span className="font-semibold text-white">
+    Computer Vision
+  </span>{" "}
+  Engineer in training. I build{" "}
+  <span className="font-semibold text-white">
+    object detection systems from scratch
+  </span>
+  , study how modern vision models work under the hood, and deploy{" "}
+  <span className="font-semibold text-white">
+    real-time inference on edge devices
+  </span>
+  .
+</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-xs text-white/60">
