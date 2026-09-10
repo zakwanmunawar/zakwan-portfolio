@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   motion,
   useMotionValue,
@@ -74,21 +73,24 @@ export default function VisionHUD() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Main image */}
-      <Image
-        src="/images/ZakVision.png"
-        alt="Zakwan — AI vision portrait"
-        fill
-        priority
-        unoptimized
-        sizes="(max-width: 1024px) 100vw, 45vw"
-        className="object-cover object-center"
-      />
+      {/* Half-human / half-robot portrait */}
+      <img
+  src="/images/ZV.jpeg"
+  alt="Zakwan — human and cybernetic portrait"
+  className="
+    absolute
+    inset-0
+    h-full
+    w-full
+    object-cover
+    object-center-top
+  "
+/>
 
       {/* Very subtle cinematic layer */}
       <div className="pointer-events-none absolute inset-0 bg-black/5" />
 
-      {/* Minimal HUD corners */}
+      {/* HUD corners */}
       <div className="pointer-events-none absolute left-4 top-4 z-20 h-6 w-6 border-l border-t border-cyan-300/70" />
 
       <div className="pointer-events-none absolute right-4 top-4 z-20 h-6 w-6 border-r border-t border-cyan-300/70" />
@@ -97,9 +99,10 @@ export default function VisionHUD() {
 
       <div className="pointer-events-none absolute bottom-4 right-4 z-20 h-6 w-6 border-b border-r border-cyan-300/70" />
 
-      {/* Minimal status */}
+      {/* Status */}
       <div className="absolute bottom-5 left-6 z-20 font-mono text-[9px] leading-5 text-cyan-300">
         <div>STATUS: TRACKING_TARGET</div>
+
         <div className="text-cyan-300/50">
           VISION_SYSTEM: ACTIVE
         </div>
@@ -108,6 +111,7 @@ export default function VisionHUD() {
       {/* Live indicator */}
       <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2 font-mono text-[9px] text-white/70">
         <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.7)]" />
+
         LIVE VISION
       </div>
     </motion.div>
