@@ -1,7 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import type { MouseEvent } from "react";
 
 type ProjectVisualProps = {
@@ -50,11 +55,17 @@ export default function ProjectVisual({
     }
   );
 
-  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
+  const handleMouseMove = (
+    event: MouseEvent<HTMLDivElement>
+  ) => {
+    const rect =
+      event.currentTarget.getBoundingClientRect();
 
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    const x =
+      (event.clientX - rect.left) / rect.width - 0.5;
+
+    const y =
+      (event.clientY - rect.top) / rect.height - 0.5;
 
     mouseX.set(x);
     mouseY.set(y);
@@ -67,7 +78,16 @@ export default function ProjectVisual({
 
   return (
     <motion.div
-      className="relative overflow-hidden border border-white/10 bg-black"
+      className="
+        group
+        relative
+        aspect-video
+        w-full
+        overflow-hidden
+        border
+        border-white/10
+        bg-black
+      "
       style={{
         rotateX,
         rotateY,
@@ -76,8 +96,9 @@ export default function ProjectVisual({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
+      {/* Image */}
       <motion.div
-        className="relative"
+        className="absolute inset-0"
         style={{
           x: imageX,
           y: imageY,
@@ -87,9 +108,9 @@ export default function ProjectVisual({
         <Image
           src={src}
           alt={alt}
-          width={1600}
-          height={900}
-          className="h-auto w-full object-cover"
+          fill
+          sizes="(max-width: 1024px) 100vw, 55vw"
+          className="object-cover object-center"
         />
       </motion.div>
 
@@ -97,17 +118,17 @@ export default function ProjectVisual({
       <div className="pointer-events-none absolute inset-0 bg-black/5" />
 
       {/* HUD corners */}
-      <div className="pointer-events-none absolute left-3 top-3 h-5 w-5 border-l border-t border-cyan-300/70" />
+      <div className="pointer-events-none absolute left-3 top-3 z-20 h-5 w-5 border-l border-t border-cyan-300/70" />
 
-      <div className="pointer-events-none absolute right-3 top-3 h-5 w-5 border-r border-t border-cyan-300/70" />
+      <div className="pointer-events-none absolute right-3 top-3 z-20 h-5 w-5 border-r border-t border-cyan-300/70" />
 
-      <div className="pointer-events-none absolute bottom-3 left-3 h-5 w-5 border-b border-l border-cyan-300/70" />
+      <div className="pointer-events-none absolute bottom-3 left-3 z-20 h-5 w-5 border-b border-l border-cyan-300/70" />
 
-      <div className="pointer-events-none absolute bottom-3 right-3 h-5 w-5 border-b border-r border-cyan-300/70" />
+      <div className="pointer-events-none absolute bottom-3 right-3 z-20 h-5 w-5 border-b border-r border-cyan-300/70" />
 
       {/* Scan line */}
       <motion.div
-        className="pointer-events-none absolute left-0 right-0 h-px bg-cyan-300/60"
+        className="pointer-events-none absolute left-0 right-0 z-20 h-px bg-cyan-300/60"
         animate={{
           top: ["15%", "85%", "15%"],
         }}
@@ -119,13 +140,26 @@ export default function ProjectVisual({
       />
 
       {/* Project identifier */}
-      <div className="absolute bottom-4 left-5 font-mono text-[9px] text-cyan-300/80">
+      <div className="absolute bottom-4 left-5 z-20 font-mono text-[9px] text-cyan-300/80">
         CV_SYSTEM // {number}
       </div>
 
       {/* Target indicator */}
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/40"
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-1/2
+          z-20
+          h-10
+          w-10
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          border
+          border-cyan-300/40
+        "
         animate={{
           scale: [1, 1.08, 1],
           opacity: [0.35, 0.7, 0.35],
@@ -137,6 +171,7 @@ export default function ProjectVisual({
         }}
       >
         <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-cyan-300/30" />
+
         <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-cyan-300/30" />
       </motion.div>
     </motion.div>
