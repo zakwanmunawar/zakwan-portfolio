@@ -36,7 +36,7 @@ const projects = [
   {
     number: "02",
     title: "worker-safety-system",
-    image: "/images/worker-safety.png",
+    image: "/images/worker-safety.jpeg",
     description:
       "A real-time worker safety system using YOLOv8 and ByteTrack to detect and track workers, identify PPE violations, and determine whether workers enter a predefined hazard zone. A React dashboard visualizes violations, hazard breaches, snapshots, processed video, and real-time audio alerts.",
     highlights: [
@@ -85,8 +85,11 @@ function ProjectCard({
   const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
 
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    const x =
+      (event.clientX - rect.left) / rect.width - 0.5;
+
+    const y =
+      (event.clientY - rect.top) / rect.height - 0.5;
 
     mouseX.set(x);
     mouseY.set(y);
@@ -106,7 +109,17 @@ function ProjectCard({
         rotateY,
         transformPerspective: 1200,
       }}
-      className="group relative overflow-hidden border border-white/10 bg-white/[0.02] transition-colors duration-500 hover:border-cyan-300/30"
+      className="
+        group
+        relative
+        overflow-hidden
+        border
+        border-white/10
+        bg-white/[0.02]
+        transition-colors
+        duration-500
+        hover:border-cyan-300/30
+      "
     >
       {/* Project header */}
       <div className="flex items-center justify-between border-b border-white/10 px-6 py-4 font-mono text-[10px]">
@@ -129,15 +142,18 @@ function ProjectCard({
 
         {/* Project information */}
         <div className="flex flex-col justify-center">
-          {/* BLUE PROJECT NUMBER */}
+
+          {/* Project number */}
           <div className="font-mono text-xs text-blue-500">
             {project.number} / 02
           </div>
 
+          {/* Project title */}
           <h3 className="mt-3 font-mono text-2xl font-bold tracking-tight sm:text-3xl">
             {project.title}
           </h3>
 
+          {/* Description */}
           <p className="mt-5 max-w-xl text-sm leading-7 text-white/50">
             {project.description}
           </p>
@@ -152,10 +168,17 @@ function ProjectCard({
               {project.highlights.map((highlight) => (
                 <div
                   key={highlight}
-                  className="flex items-start gap-2 font-mono text-[10px] text-white/50"
+                  className="
+                    flex
+                    items-start
+                    gap-2
+                    font-mono
+                    text-[10px]
+                    text-white/50
+                  "
                 >
-                  {/* BLUE CAPABILITY MARKER */}
                   <span className="mt-1 h-1 w-1 shrink-0 bg-blue-500" />
+
                   {highlight}
                 </div>
               ))}
@@ -167,20 +190,44 @@ function ProjectCard({
             {project.technologies.map((technology) => (
               <span
                 key={technology}
-                className="border border-cyan-300/20 px-3 py-1.5 font-mono text-[9px] text-cyan-300/70 transition-colors duration-300 hover:border-cyan-300/50 hover:text-cyan-300"
+                className="
+                  border
+                  border-cyan-300/20
+                  px-3
+                  py-1.5
+                  font-mono
+                  text-[9px]
+                  text-cyan-300/70
+                  transition-colors
+                  duration-300
+                  hover:border-cyan-300/50
+                  hover:text-cyan-300
+                "
               >
                 {technology}
               </span>
             ))}
           </div>
 
-          {/* GitHub */}
+          {/* GitHub / View Source */}
           <div className="mt-10">
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex border border-white/20 px-5 py-3 font-mono text-[10px] text-white/70 transition-all duration-300 hover:border-blue-500 hover:text-blue-500"
+              className="
+                inline-flex
+                bg-blue-500
+                px-6
+                py-3
+                font-mono
+                text-sm
+                font-semibold
+                text-black
+                transition
+                hover:-translate-y-1
+                hover:bg-blue-400
+              "
             >
               VIEW SOURCE →
             </a>
@@ -189,7 +236,18 @@ function ProjectCard({
       </div>
 
       {/* Subtle cinematic edge glow */}
-      <div className="pointer-events-none absolute inset-0 border border-cyan-300/0 transition-colors duration-500 group-hover:border-cyan-300/[0.06]" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          border
+          border-cyan-300/0
+          transition-colors
+          duration-500
+          group-hover:border-cyan-300/[0.06]
+        "
+      />
     </motion.article>
   );
 }
@@ -201,6 +259,7 @@ export default function ProjectSection() {
       className="border-t border-white/10 px-6 py-32"
     >
       <div className="mx-auto max-w-7xl">
+
         {/* Section heading */}
         <Reveal className="max-w-3xl">
           <p className="font-mono text-xs text-cyan-300">
@@ -210,15 +269,14 @@ export default function ProjectSection() {
           <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             SYSTEMS
             <br />
-            {/* BLUE BUILT */}
             <span className="text-blue-500">
               BUILT
             </span>
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/50">
-            Real-world AI and computer vision systems designed, implemented,
-            and tested through hands-on engineering.
+            Real-world AI and computer vision systems designed,
+            implemented, and tested through hands-on engineering.
           </p>
         </Reveal>
 
