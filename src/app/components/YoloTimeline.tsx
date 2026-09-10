@@ -26,7 +26,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "YOLO Detection Head",
     image: "/yolo/yolo-v1.png",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov01.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov01.py",
   },
 
   YOLOv2: {
@@ -39,7 +39,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Anchor-based Detection Head",
     image: "/yolo/yolo-v2.jpg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov02.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov02.py",
   },
 
   YOLOv3: {
@@ -52,7 +52,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Multi-scale Detection Head",
     image: "/yolo/yolo-v3.webp",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov03.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov03.py",
   },
 
   YOLOv4: {
@@ -65,7 +65,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "YOLO Detection Head",
     image: "/yolo/yolo-v4.jpg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/master/external_repos/yolov4_darknet",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/main/external_repos/yolov4_darknet",
   },
 
   YOLOv5: {
@@ -78,7 +78,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Detect Head",
     image: "/yolo/yolo-v5.png",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/master/external_repos/yolov5",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/main/external_repos/yolov5",
   },
 
   YOLOv6: {
@@ -91,7 +91,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Efficient Decoupled Head",
     image: "/yolo/yolo-v6.png",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/master/external_repos/yolov6",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/main/external_repos/yolov6",
   },
 
   YOLOv7: {
@@ -104,7 +104,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "YOLO Detection Head",
     image: "/yolo/yolo-v7.jpg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov07.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov07.py",
   },
 
   YOLOv8: {
@@ -117,7 +117,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Anchor-free Decoupled Head",
     image: "/yolo/yolo-v8.jpeg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov08.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov08.py",
   },
 
   YOLOv9: {
@@ -130,7 +130,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Detection Head",
     image: "/yolo/yolo-v9.jpg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov09.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov09.py",
   },
 
   YOLOv10: {
@@ -143,7 +143,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "End-to-End Detection Head",
     image: "/yolo/yolo-v10.jpg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov10.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov10.py",
   },
 
   YOLO11: {
@@ -156,7 +156,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Anchor-free Head",
     image: "/yolo/yolo-11.jpg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov11.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov11.py",
   },
 
   YOLO12: {
@@ -169,7 +169,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "Detection Head",
     image: "/yolo/yolo-12.jpg",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov12.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov12.py",
   },
 
   YOLO26: {
@@ -182,7 +182,7 @@ const yoloData: Record<string, YoloInfo> = {
     head: "End-to-End Detection Head",
     image: "/yolo/yolo-26.png",
     github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolo26.py",
+      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolo26.py",
   },
 };
 
@@ -201,8 +201,7 @@ export default function YoloTimeline() {
 
     const handleWheel = (event: WheelEvent) => {
       const maxScrollLeft =
-        container.scrollWidth -
-        container.clientWidth;
+        container.scrollWidth - container.clientWidth;
 
       const currentScrollLeft =
         container.scrollLeft;
@@ -223,7 +222,6 @@ export default function YoloTimeline() {
 
       if (canScrollRight || canScrollLeft) {
         event.preventDefault();
-
         container.scrollLeft += event.deltaY;
       }
     };
@@ -247,10 +245,7 @@ export default function YoloTimeline() {
       }
     };
 
-    window.addEventListener(
-      "keydown",
-      handleEscape
-    );
+    window.addEventListener("keydown", handleEscape);
 
     return () => {
       window.removeEventListener(
@@ -308,10 +303,8 @@ export default function YoloTimeline() {
         {/* Timeline */}
         <div className="relative mt-20">
 
-          {/* Timeline line */}
           <div className="absolute left-0 right-0 top-1/2 h-px bg-white/10" />
 
-          {/* Horizontal timeline */}
           <div
             ref={timelineRef}
             className="
@@ -326,166 +319,152 @@ export default function YoloTimeline() {
               [&::-webkit-scrollbar]:hidden
             "
           >
-            {yoloVersions.map(
-              (version, index) => {
-                const isFirst =
-                  index === 0;
+            {yoloVersions.map((version, index) => {
+              const isFirst = index === 0;
+              const isLast =
+                index === yoloVersions.length - 1;
 
-                const isLast =
-                  index ===
-                  yoloVersions.length - 1;
+              const data = yoloData[version];
 
-                const data =
-                  yoloData[version];
-
-                return (
-                  <motion.button
-                    key={version}
-                    type="button"
-                    onClick={() =>
-                      setSelectedVersion(
-                        version
-                      )
-                    }
-                    className="
-                      group
-                      relative
-                      min-w-[150px]
-                      shrink-0
-                      cursor-pointer
-                      text-left
-                    "
-                    initial={{
-                      opacity: 0,
-                      y: 24,
-                      scale: 0.96,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                    }}
-                    viewport={{
-                      once: true,
-                      amount: 0.35,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: Math.min(
-                        index * 0.035,
-                        0.25
-                      ),
-                      ease: [
-                        0.22,
-                        1,
-                        0.36,
-                        1,
-                      ],
-                    }}
-                  >
-                    {/* Timeline node */}
-                    <div className="relative z-10 flex justify-center">
-                      <motion.div
-                        className={`
-                          h-4
-                          w-4
-                          rounded-full
-                          border-2
-                          transition-all
-                          duration-300
-                          ${
-                            isFirst || isLast
-                              ? `
-                                border-blue-500
-                                bg-blue-500
-                                shadow-[0_0_18px_rgba(59,130,246,0.5)]
-                              `
-                              : `
-                                border-cyan-300/50
-                                bg-[#08090a]
-                              `
-                          }
-                        `}
-                        whileHover={{
-                          scale: 1.3,
-                        }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 20,
-                        }}
-                      />
-                    </div>
-
-                    {/* Timeline card */}
+              return (
+                <motion.button
+                  key={version}
+                  type="button"
+                  onClick={() =>
+                    setSelectedVersion(version)
+                  }
+                  className="
+                    group
+                    relative
+                    min-w-[150px]
+                    shrink-0
+                    cursor-pointer
+                    text-left
+                  "
+                  initial={{
+                    opacity: 0,
+                    y: 24,
+                    scale: 0.96,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.35,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: Math.min(
+                      index * 0.035,
+                      0.25
+                    ),
+                    ease: [
+                      0.22,
+                      1,
+                      0.36,
+                      1,
+                    ],
+                  }}
+                >
+                  {/* Node */}
+                  <div className="relative z-10 flex justify-center">
                     <motion.div
                       className={`
-                        mt-8
-                        border
-                        p-4
-                        transition-colors
+                        h-4
+                        w-4
+                        rounded-full
+                        border-2
+                        transition-all
                         duration-300
                         ${
                           isFirst || isLast
                             ? `
-                              border-blue-500/40
-                              bg-blue-500/[0.04]
+                              border-blue-500
+                              bg-blue-500
+                              shadow-[0_0_18px_rgba(59,130,246,0.5)]
                             `
                             : `
-                              border-white/10
-                              bg-white/[0.02]
-                              group-hover:border-cyan-300/40
+                              border-cyan-300/50
+                              bg-[#08090a]
                             `
                         }
                       `}
                       whileHover={{
-                        y: -6,
+                        scale: 1.3,
                       }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 24,
-                      }}
+                    />
+                  </div>
+
+                  {/* Card */}
+                  <motion.div
+                    className={`
+                      mt-8
+                      border
+                      p-4
+                      transition-colors
+                      duration-300
+                      ${
+                        isFirst || isLast
+                          ? `
+                            border-blue-500/40
+                            bg-blue-500/[0.04]
+                          `
+                          : `
+                            border-white/10
+                            bg-white/[0.02]
+                            group-hover:border-cyan-300/40
+                          `
+                      }
+                    `}
+                    whileHover={{
+                      y: -6,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 24,
+                    }}
+                  >
+                    <div className="font-mono text-[10px] text-white/30">
+                      {String(index + 1).padStart(
+                        2,
+                        "0"
+                      )}
+                    </div>
+
+                    <div className="mt-2 font-mono text-sm font-semibold">
+                      {version}
+                    </div>
+
+                    <div
+                      className={`
+                        mt-2
+                        font-mono
+                        text-[9px]
+                        ${
+                          data.type === "IMPLEMENTED"
+                            ? "text-blue-500/70"
+                            : "text-cyan-300/50"
+                        }
+                      `}
                     >
-                      <div className="font-mono text-[10px] text-white/30">
-                        {String(index + 1).padStart(
-                          2,
-                          "0"
-                        )}
-                      </div>
+                      {data.type}
+                    </div>
 
-                      <div className="mt-2 font-mono text-sm font-semibold">
-                        {version}
-                      </div>
+                    <div className="mt-1 font-mono text-[9px] text-white/30">
+                      {data.year}
+                    </div>
 
-                      <div
-                        className={`
-                          mt-2
-                          font-mono
-                          text-[9px]
-                          ${
-                            data.type ===
-                            "IMPLEMENTED"
-                              ? "text-blue-500/70"
-                              : "text-cyan-300/50"
-                          }
-                        `}
-                      >
-                        {data.type}
-                      </div>
-
-                      <div className="mt-1 font-mono text-[9px] text-white/30">
-                        {data.year}
-                      </div>
-
-                      <div className="mt-3 font-mono text-[8px] text-blue-500/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        CLICK TO EXPLORE →
-                      </div>
-                    </motion.div>
-                  </motion.button>
-                );
-              }
-            )}
+                    <div className="mt-3 font-mono text-[8px] text-blue-500/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      CLICK TO EXPLORE →
+                    </div>
+                  </motion.div>
+                </motion.button>
+              );
+            })}
           </div>
         </div>
 
@@ -500,6 +479,7 @@ export default function YoloTimeline() {
             YOLO EVOLUTION // ARCHITECTURE → IMPLEMENTATION
           </div>
         </div>
+
       </div>
 
       {/* Detail modal */}
@@ -568,7 +548,7 @@ export default function YoloTimeline() {
 
                 return (
                   <>
-                    {/* Modal header */}
+                    {/* Header */}
                     <div className="flex items-start justify-between gap-6">
                       <div>
                         <p
@@ -576,8 +556,7 @@ export default function YoloTimeline() {
                             font-mono
                             text-xs
                             ${
-                              data.type ===
-                              "IMPLEMENTED"
+                              data.type === "IMPLEMENTED"
                                 ? "text-blue-500"
                                 : "text-cyan-300"
                             }
@@ -598,9 +577,7 @@ export default function YoloTimeline() {
                       <button
                         type="button"
                         onClick={() =>
-                          setSelectedVersion(
-                            null
-                          )
+                          setSelectedVersion(null)
                         }
                         className="
                           border
@@ -627,8 +604,7 @@ export default function YoloTimeline() {
                     {/* Architecture */}
                     <div className="mt-8 overflow-hidden border border-white/10 bg-black">
                       <div className="border-b border-white/10 px-4 py-3 font-mono text-[10px] text-cyan-300/70">
-                        ARCHITECTURE //{" "}
-                        {selectedVersion}
+                        ARCHITECTURE // {selectedVersion}
                       </div>
 
                       <div className="flex min-h-[240px] items-center justify-center bg-black p-4 sm:min-h-[300px]">
@@ -665,8 +641,7 @@ export default function YoloTimeline() {
                       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                           <div className="font-mono text-[10px] text-cyan-300/60">
-                            {data.type ===
-                            "IMPLEMENTED"
+                            {data.type === "IMPLEMENTED"
                               ? "IMPLEMENTATION"
                               : "REFERENCE IMPLEMENTATION"}
                           </div>
