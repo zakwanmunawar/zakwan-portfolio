@@ -102,7 +102,7 @@ const yoloData: Record<string, YoloInfo> = {
     backbone: "E-ELAN",
     neck: "PAN",
     head: "YOLO Detection Head",
-    image: "/yolo/yolo-v7.png",
+    image: "/yolo/yolo-v7.jpg",
     github:
       "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov07.py",
   },
@@ -128,7 +128,7 @@ const yoloData: Record<string, YoloInfo> = {
     backbone: "GELAN",
     neck: "GELAN-based Feature Aggregation",
     head: "Detection Head",
-    image: "/yolo/yolo-v9.png",
+    image: "/yolo/yolo-v9.jpg",
     github:
       "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov09.py",
   },
@@ -154,7 +154,7 @@ const yoloData: Record<string, YoloInfo> = {
     backbone: "C3k2-based",
     neck: "PAN-FPN",
     head: "Anchor-free Head",
-    image: "/yolo/yolo-11.png",
+    image: "/yolo/yolo-11.jpg",
     github:
       "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/master/models/yolov11.py",
   },
