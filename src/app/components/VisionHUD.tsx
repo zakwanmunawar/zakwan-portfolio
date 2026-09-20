@@ -75,7 +75,7 @@ export default function VisionHUD() {
     >
       {/* Half-human / half-robot portrait */}
       <img
-  src="/images/zv.png"
+  src="/images/ZV.jpeg"
   alt="Zakwan — human and cybernetic portrait"
   className="
     absolute
