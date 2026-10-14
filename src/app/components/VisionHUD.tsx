@@ -1,117 +1,61 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "motion/react";
-import type { MouseEvent } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 
 export default function VisionHUD() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // Subtle movement for the image panel
-  const hudX = useSpring(
-    useTransform(mouseX, [-0.5, 0.5], [-6, 6]),
-    {
-      stiffness: 120,
-      damping: 20,
-    }
-  );
-
-  const hudY = useSpring(
-    useTransform(mouseY, [-0.5, 0.5], [-6, 6]),
-    {
-      stiffness: 120,
-      damping: 20,
-    }
-  );
-
-  const handleMouseMove = (
-    event: MouseEvent<HTMLDivElement>
-  ) => {
-    const rect =
-      event.currentTarget.getBoundingClientRect();
-
-    const x =
-      (event.clientX - rect.left) / rect.width - 0.5;
-
-    const y =
-      (event.clientY - rect.top) / rect.height - 0.5;
-
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.div
-      className="
-        relative
-        h-[520px]
-        w-full
-        overflow-hidden
-        border border-white/10
-        bg-black
-        lg:h-[calc(100vh-5rem)]
-        lg:min-h-[680px]
-        lg:max-h-[860px]
-        lg:w-[88%]
-        lg:justify-self-end
-      "
-      style={{
-        x: hudX,
-        y: hudY,
-        transformPerspective: 1000,
+      initial={reduceMotion ? false : { opacity: 0, x: -72 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{
+        duration: reduceMotion ? 0 : 1.1,
+        delay: reduceMotion ? 0 : 0.04,
+        ease: [0.22, 1, 0.36, 1],
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className="relative h-[min(68vh,760px)] min-h-[450px] w-full overflow-hidden bg-transparent sm:h-[min(74vh,820px)] lg:absolute lg:inset-0 lg:h-full lg:min-h-0"
     >
-      {/* Half-human / half-robot portrait */}
-      <img
-  src="/images/zv.png"
-  alt="Zakwan — human and cybernetic portrait"
-  className="
-    absolute
-    inset-0
-    h-full
-    w-full
-    object-cover
-    object-center-top
-  "
-/>
+      <motion.div
+        className="absolute inset-0"
+        animate={reduceMotion ? { scale: 1 } : { scale: [1, 1.014, 1], x: [0, -1, 0] }}
+        transition={{ duration: 22, repeat: reduceMotion ? 0 : Infinity, ease: "easeInOut" }}
+      >
+        <Image
+          src="/images/ZV-hero.png"
+          alt="Portrait of Zakwan with a blue cybernetic visual treatment"
+          fill
+          priority
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 90vw, 44vw"
+          className="object-cover object-center"
+        />
+      </motion.div>
 
-      {/* Very subtle cinematic layer */}
-      <div className="pointer-events-none absolute inset-0 bg-black/5" />
+      {/* Let the portrait dissolve naturally into the page instead of reading as a card. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(8,9,10,0.02)_0%,transparent_38%,rgba(8,9,10,0.22)_72%,#08090A_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#08090A_0%,rgba(8,9,10,0.02)_15%,rgba(8,9,10,0.02)_72%,#08090A_100%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_42%_40%,rgba(37,99,235,0.07),transparent_57%)]"
+      />
 
-      {/* HUD corners */}
-      <div className="pointer-events-none absolute left-4 top-4 z-20 h-6 w-6 border-l border-t border-cyan-300/70" />
+      {/* Small interface details; no scanning line or heavy neon frame. */}
+      <div className="pointer-events-none absolute left-5 top-5 z-20 h-7 w-7 border-l border-t border-cyan-200/55 sm:left-7 sm:top-7" />
+      <div className="pointer-events-none absolute bottom-7 left-5 z-20 h-7 w-7 border-b border-l border-cyan-200/45 sm:bottom-9 sm:left-7" />
 
-      <div className="pointer-events-none absolute right-4 top-4 z-20 h-6 w-6 border-r border-t border-cyan-300/70" />
-
-      <div className="pointer-events-none absolute bottom-4 left-4 z-20 h-6 w-6 border-b border-l border-cyan-300/70" />
-
-      <div className="pointer-events-none absolute bottom-4 right-4 z-20 h-6 w-6 border-b border-r border-cyan-300/70" />
-
-      {/* Status */}
-      <div className="absolute bottom-5 left-6 z-20 font-mono text-[9px] leading-5 text-cyan-300">
+      <div className="absolute bottom-10 right-5 z-20 text-right font-mono text-[8px] leading-5 tracking-[0.08em] text-cyan-100/75 sm:bottom-12 sm:right-7 sm:text-[9px]">
         <div>STATUS: TRACKING_TARGET</div>
-
-        <div className="text-cyan-300/50">
-          VISION_SYSTEM: ACTIVE
-        </div>
+        <div className="text-cyan-100/45">VISION_SYSTEM: ACTIVE</div>
       </div>
-
-      {/* Live indicator */}
-      <div className="absolute bottom-5 right-5 z-20 flex items-center gap-2 font-mono text-[9px] text-white/70">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.7)]" />
-
+      <div className="absolute bottom-5 right-5 z-20 flex items-center justify-end gap-2 font-mono text-[8px] tracking-[0.13em] text-white/55 sm:bottom-7 sm:right-7 sm:text-[9px]">
+        <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
         LIVE VISION
       </div>
     </motion.div>

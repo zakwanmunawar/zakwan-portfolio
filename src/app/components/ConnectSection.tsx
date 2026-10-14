@@ -25,7 +25,7 @@ export default function ConnectSection() {
         </div>
 
         {/* Main panel */}
-        <div className="relative mt-16 overflow-hidden border border-white/10 bg-white/[0.02]">
+        <div className="relative mt-16 overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))]">
 
           {/* HUD corners */}
           <div className="absolute left-0 top-0 h-10 w-10 border-l border-t border-cyan-300/50" />
@@ -104,7 +104,7 @@ export default function ConnectSection() {
                   href="/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group border border-blue-500/40 bg-blue-500/[0.04] p-5 transition-all duration-300 hover:border-blue-500 hover:bg-blue-500/10"
+                  className="group border border-blue-500/40 bg-[linear-gradient(180deg,rgba(37,99,235,0.11),rgba(37,99,235,0.04))] p-5 transition-all duration-300 hover:border-blue-500 hover:bg-[linear-gradient(180deg,rgba(37,99,235,0.16),rgba(37,99,235,0.06))]"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs font-bold text-blue-500">

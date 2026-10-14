@@ -268,7 +268,7 @@ export default function VisionCore3D() {
       <div className="mx-auto max-w-7xl">
 
         {/* 3D container */}
-        <div className="relative h-[420px] w-full overflow-hidden border border-white/10 bg-[#050708] sm:h-[500px]">
+        <div className="relative h-[420px] w-full overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_50%_0%,rgba(34,211,238,0.12),rgba(5,7,8,0.96)_58%),linear-gradient(180deg,#07090c_0%,#050708_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:h-[500px]">
 
           <Canvas
             camera={{

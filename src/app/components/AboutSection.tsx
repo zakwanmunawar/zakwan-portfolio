@@ -109,7 +109,7 @@ export default function AboutSection() {
                     stiffness: 300,
                     damping: 24,
                   }}
-                  className="group border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300 hover:border-cyan-300/30"
+                  className="group border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-5 transition-colors duration-300 hover:border-cyan-300/30"
                 >
                   <p className="font-mono text-[10px] text-blue-500">
                     FOCUS_{focus.number}
@@ -137,7 +137,7 @@ export default function AboutSection() {
               stiffness: 300,
               damping: 24,
             }}
-            className="group relative border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-cyan-300/30 sm:p-8"
+            className="group relative border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 transition-colors duration-300 hover:border-cyan-300/30 sm:p-8"
           >
             {/* HUD corners */}
             <div className="absolute left-0 top-0 h-8 w-8 border-l border-t border-cyan-300/50 transition-colors duration-300 group-hover:border-cyan-300/80" />

@@ -86,7 +86,7 @@ export default function ProjectVisual({
         overflow-hidden
         border
         border-white/10
-        bg-black
+        bg-[radial-gradient(circle_at_50%_20%,rgba(14,116,144,0.12),rgba(0,0,0,0.12)_35%,rgba(0,0,0,0.92)_78%),linear-gradient(180deg,#090b10_0%,#050608_100%)]
       "
       style={{
         rotateX,
@@ -125,19 +125,6 @@ export default function ProjectVisual({
       <div className="pointer-events-none absolute bottom-3 left-3 z-20 h-5 w-5 border-b border-l border-cyan-300/70" />
 
       <div className="pointer-events-none absolute bottom-3 right-3 z-20 h-5 w-5 border-b border-r border-cyan-300/70" />
-
-      {/* Scan line */}
-      <motion.div
-        className="pointer-events-none absolute left-0 right-0 z-20 h-px bg-cyan-300/60"
-        animate={{
-          top: ["15%", "85%", "15%"],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
 
       {/* Project identifier */}
       <div className="absolute bottom-4 left-5 z-20 font-mono text-[9px] text-cyan-300/80">

@@ -12,7 +12,6 @@ type YoloInfo = {
   neck: string;
   head: string;
   image: string;
-  github: string;
 };
 
 const yoloData: Record<string, YoloInfo> = {
@@ -25,8 +24,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "None",
     head: "YOLO Detection Head",
     image: "/yolo/yolo-v1.png",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov01.py",
   },
 
   YOLOv2: {
@@ -38,8 +35,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "Passthrough",
     head: "Anchor-based Detection Head",
     image: "/yolo/yolo-v2.jpg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov02.py",
   },
 
   YOLOv3: {
@@ -51,8 +46,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "FPN-style",
     head: "Multi-scale Detection Head",
     image: "/yolo/yolo-v3.webp",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov03.py",
   },
 
   YOLOv4: {
@@ -64,8 +57,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "SPP + PAN",
     head: "YOLO Detection Head",
     image: "/yolo/yolo-v4.jpg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/main/external_repos/yolov4_darknet",
   },
 
   YOLOv5: {
@@ -77,8 +68,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "PANet",
     head: "Detect Head",
     image: "/yolo/yolo-v5.png",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/main/external_repos/yolov5",
   },
 
   YOLOv6: {
@@ -90,8 +79,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "Rep-PAN",
     head: "Efficient Decoupled Head",
     image: "/yolo/yolo-v6.png",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/tree/main/external_repos/yolov6",
   },
 
   YOLOv7: {
@@ -103,8 +90,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "PAN",
     head: "YOLO Detection Head",
     image: "/yolo/yolo-v7.jpg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov07.py",
   },
 
   YOLOv8: {
@@ -116,8 +101,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "PAN-FPN",
     head: "Anchor-free Decoupled Head",
     image: "/yolo/yolo-v8.jpeg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov08.py",
   },
 
   YOLOv9: {
@@ -129,8 +112,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "GELAN-based Feature Aggregation",
     head: "Detection Head",
     image: "/yolo/yolo-v9.jpg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov09.py",
   },
 
   YOLOv10: {
@@ -142,8 +123,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "PAN-style",
     head: "End-to-End Detection Head",
     image: "/yolo/yolo-v10.jpg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov10.py",
   },
 
   YOLO11: {
@@ -155,8 +134,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "PAN-FPN",
     head: "Anchor-free Head",
     image: "/yolo/yolo-11.jpg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov11.py",
   },
 
   YOLO12: {
@@ -168,8 +145,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "Feature Aggregation",
     head: "Detection Head",
     image: "/yolo/yolo-12.jpg",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolov12.py",
   },
 
   YOLO26: {
@@ -181,8 +156,6 @@ const yoloData: Record<string, YoloInfo> = {
     neck: "Modern Feature Pyramid",
     head: "End-to-End Detection Head",
     image: "/yolo/yolo-26.png",
-    github:
-      "https://github.com/zakwanmunawar/YOLO-Evolution-PyTorch/blob/main/models/yolo26.py",
   },
 };
 
@@ -634,44 +607,6 @@ export default function YoloTimeline() {
                         title="HEAD"
                         value={data.head}
                       />
-                    </div>
-
-                    {/* Code */}
-                    <div className="mt-8 border border-white/10 bg-white/[0.02] p-5">
-                      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                        <div>
-                          <div className="font-mono text-[10px] text-cyan-300/60">
-                            {data.type === "IMPLEMENTED"
-                              ? "IMPLEMENTATION"
-                              : "REFERENCE IMPLEMENTATION"}
-                          </div>
-
-                          <div className="mt-2 font-mono text-sm text-white/70">
-                            YOLO-Evolution-PyTorch
-                          </div>
-                        </div>
-
-                        <a
-                          href={data.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="
-                            inline-flex
-                            w-fit
-                            bg-blue-500
-                            px-5
-                            py-3
-                            font-mono
-                            text-xs
-                            font-semibold
-                            text-black
-                            transition
-                            hover:bg-blue-400
-                          "
-                        >
-                          VIEW CODE →
-                        </a>
-                      </div>
                     </div>
                   </>
                 );

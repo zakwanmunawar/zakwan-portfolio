@@ -119,7 +119,7 @@ export default function StackSection() {
                 delay: categoryIndex * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group relative overflow-hidden border border-white/10 bg-white/[0.02] p-6 transition-all duration-500 hover:border-cyan-300/30 hover:bg-white/[0.035] sm:p-8"
+              className="group relative overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))] p-6 transition-all duration-500 hover:border-cyan-300/30 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] sm:p-8"
             >
 
               {/* Decorative corner */}
@@ -215,7 +215,7 @@ export default function StackSection() {
             duration: 0.6,
             delay: 0.2,
           }}
-          className="mt-10 border border-blue-500/20 bg-blue-500/[0.025] p-6 sm:p-8"
+          className="mt-10 border border-blue-500/20 bg-[linear-gradient(180deg,rgba(37,99,235,0.08),rgba(37,99,235,0.02))] p-6 sm:p-8"
         >
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 

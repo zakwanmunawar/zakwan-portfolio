@@ -17,7 +17,7 @@ const projects = [
     title: "AeroDrop-Tracker",
     image: "/images/aerodrop.png",
     description:
-      "An AI-powered autonomous drone software system that uses computer vision to detect ground targets from an aerial perspective in real time. The system tracks the target's relative position, calculates X/Y spatial offset errors against a central crosshair, and requires five consecutive frames of lock-on stability before dispatch.",
+      "An AI-powered autonomous drone software system that uses computer vision to detect ground targets from an aerial perspective in real time. The system tracks relative target position, calculates X/Y spatial offset errors against a central crosshair, and requires five consecutive frames of lock-on stability before dispatch.",
     highlights: [
       "Real-time aerial target detection",
       "X/Y spatial offset calculation",
@@ -31,11 +31,10 @@ const projects = [
       "AI",
       "REAL-TIME DETECTION",
     ],
-    github: "https://github.com/zakwanmunawar/AeroDrop-Tracker",
   },
   {
     number: "02",
-    title: "worker-safety-system",
+    title: "Worker Safety System",
     image: "/images/worker-safety.jpeg",
     description:
       "A real-time worker safety system using YOLOv8 and ByteTrack to detect and track workers, identify PPE violations, and determine whether workers enter a predefined hazard zone. A React dashboard visualizes violations, hazard breaches, snapshots, processed video, and real-time audio alerts.",
@@ -54,7 +53,51 @@ const projects = [
       "REACT",
       "PYTHON",
     ],
-    github: "https://github.com/zakwanmunawar/worker-safety-system",
+  },
+  {
+    number: "03",
+    title: "AgriVision AI — Pest Surveillance",
+    image: "/images/pest-detector.png",
+    description:
+      "An agricultural pest surveillance system using YOLO26 Nano for pest detection, ByteTrack for object tracking, and MQTT telemetry for communicating detection events. The project combines a Python video-processing pipeline, FastAPI services, and a React surveillance console.",
+    highlights: [
+      "YOLO26 Nano pest detection",
+      "ByteTrack object tracking",
+      "MQTT detection telemetry",
+      "FastAPI backend services",
+      "React surveillance console",
+      "Agricultural video processing",
+    ],
+    technologies: [
+      "YOLO26 NANO",
+      "BYTETRACK",
+      "FASTAPI",
+      "REACT",
+      "MQTT",
+      "OPENCV",
+    ],
+  },
+  {
+    number: "04",
+    title: "PRJ_96 — Manhole & Open Drain Detection",
+    image: "/images/prj96-manhole.png",
+    description:
+      "An AI-assisted smart-city hazard reporting prototype for manhole and open-drain risks. Its FastAPI detection endpoint processes uploaded images using YOLO inference, incorporates geographic coordinates and foot-traffic density into reports, calculates a repair-priority score, and returns annotated detections for review.",
+    highlights: [
+      "YOLO-based image inference",
+      "Image-upload detection API",
+      "Geographic coordinate tagging",
+      "Foot-traffic-based prioritization",
+      "Annotated detection results",
+      "Landing page and dashboard UI",
+    ],
+    technologies: [
+      "YOLOv8",
+      "FASTAPI",
+      "PYTHON",
+      "OPENCV",
+      "GEO-TAGGING",
+    ],
   },
 ];
 
@@ -85,11 +128,8 @@ function ProjectCard({
   const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
 
-    const x =
-      (event.clientX - rect.left) / rect.width - 0.5;
-
-    const y =
-      (event.clientY - rect.top) / rect.height - 0.5;
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
 
     mouseX.set(x);
     mouseY.set(y);
@@ -115,7 +155,7 @@ function ProjectCard({
         overflow-hidden
         border
         border-white/10
-        bg-white/[0.02]
+        bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.016))]
         transition-colors
         duration-500
         hover:border-cyan-300/30
@@ -142,23 +182,19 @@ function ProjectCard({
 
         {/* Project information */}
         <div className="flex flex-col justify-center">
-
-          {/* Project number */}
           <div className="font-mono text-xs text-blue-500">
-            {project.number} / 02
+            {project.number} / 04
           </div>
 
-          {/* Project title */}
           <h3 className="mt-3 font-mono text-2xl font-bold tracking-tight sm:text-3xl">
             {project.title}
           </h3>
 
-          {/* Description */}
           <p className="mt-5 max-w-xl text-sm leading-7 text-white/50">
             {project.description}
           </p>
 
-          {/* Capabilities */}
+          {/* System capabilities */}
           <div className="mt-7">
             <p className="font-mono text-[10px] text-white/30">
               SYSTEM CAPABILITIES
@@ -178,7 +214,6 @@ function ProjectCard({
                   "
                 >
                   <span className="mt-1 h-1 w-1 shrink-0 bg-blue-500" />
-
                   {highlight}
                 </div>
               ))}
@@ -208,30 +243,6 @@ function ProjectCard({
               </span>
             ))}
           </div>
-
-          {/* GitHub / View Source */}
-          <div className="mt-10">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                inline-flex
-                bg-blue-500
-                px-6
-                py-3
-                font-mono
-                text-sm
-                font-semibold
-                text-black
-                transition
-                hover:-translate-y-1
-                hover:bg-blue-400
-              "
-            >
-              VIEW SOURCE →
-            </a>
-          </div>
         </div>
       </div>
 
@@ -259,7 +270,6 @@ export default function ProjectSection() {
       className="border-t border-white/10 px-6 py-32"
     >
       <div className="mx-auto max-w-7xl">
-
         {/* Section heading */}
         <Reveal className="max-w-3xl">
           <p className="font-mono text-xs text-cyan-300">
@@ -280,7 +290,7 @@ export default function ProjectSection() {
           </p>
         </Reveal>
 
-        {/* Projects */}
+        {/* All four featured projects */}
         <div className="mt-20 space-y-8">
           {projects.map((project) => (
             <ProjectCard

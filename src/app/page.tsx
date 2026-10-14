@@ -1,4 +1,6 @@
+import SiteNav from "./components/SiteNav";
 import VisionHUD from "./components/VisionHUD";
+import HeroIntro from "./components/HeroIntro";
 import YoloTimeline from "./components/YoloTimeline";
 import ProjectSection from "./components/ProjectSection";
 import StackSection from "./components/StackSection";
@@ -10,61 +12,25 @@ export default function Home() {
   return (
     <main
       id="top"
-      className="min-h-screen overflow-x-hidden bg-[#08090A] text-[#E9E7E1]"
+      className="relative min-h-screen overflow-x-hidden bg-[#08090A] text-[#E9E7E1]"
     >
-      {/* Navigation */}
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#08090A]/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          <a
-            href="#top"
-            className="font-mono text-sm font-bold tracking-tight text-white"
-          >
-            {/* 1. Small square before ZAKWAN*/}
-            <span className="mr-2 inline-block h-2 w-2 bg-blue-500" />
-            ZAKWAN
-          </a>
+      {/* Subtle ambient background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_75%_18%,rgba(22,45,72,0.10),transparent_40%)]"
+      />
 
-          <div className="hidden items-center gap-8 font-mono text-xs text-white/50 md:flex">
-            <a
-              href="#work"
-              className="transition hover:text-orange-500"
-            >
-              PROJECTS
-            </a>
-
-            <a
-              href="#stack"
-              className="transition hover:text-orange-500"
-            >
-              STACK
-            </a>
-
-            <a
-              href="#about"
-              className="transition hover:text-orange-500"
-            >
-              ABOUT
-            </a>
-
-            {/* 3. CONTACT */}
-            <a
-              href="#contact"
-              className="bg-blue-500 px-4 py-2 font-semibold text-black transition hover:bg-blue-400"
-            >
-              CONTACT
-            </a>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* Hero */}
       <section
         id="hero"
-        className="relative flex min-h-screen items-center overflow-hidden pt-16"
+        className="relative isolate min-h-screen overflow-hidden pt-[68px]"
       >
-        {/* Background grid */}
+        {/* Technical grid */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-20"
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.18]"
           style={{
             backgroundImage: `
               linear-gradient(#25282c 1px, transparent 1px),
@@ -72,76 +38,26 @@ export default function Home() {
             `,
             backgroundSize: "48px 48px",
             maskImage:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 85%)",
+              "radial-gradient(ellipse 82% 70% at 34% 42%, black 18%, transparent 82%)",
           }}
         />
 
-        <div className="relative mx-auto grid min-h-screen w-full max-w-[1600px] gap-12 px-8 pb-24 pt-20 lg:grid-cols-[1fr_1fr] lg:items-start xl:px-12">
-          {/* Left */}
-          <div className="mt-0">
-            <div className="mb-6 flex items-center gap-3 font-mono text-xs text-cyan-300">
-              <span className="h-px w-5 bg-cyan-300" />
-              $ whoami
-            </div>
+        {/* Ambient hero lighting */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_24%_42%,rgba(30,64,175,0.2),transparent_28%),radial-gradient(circle_at_72%_20%,rgba(8,15,28,0.75),transparent_34%)]"
+        />
 
-            <h1 className="font-mono text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-              MOHAMMED
-              <br />
-              ZAKWAN M
-              {/* 2. Small square/dot after Mohammed Zakwan M */}
-              <span className="text-blue-500">.</span>
-            </h1>
-
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-white sm:text-xl">
-  <span className="font-semibold text-white">
-    Computer Vision
-  </span>{" "}
-  Engineer in training. I build{" "}
-  <span className="font-semibold text-white">
-    object detection systems from scratch
-  </span>
-  , study how modern vision models work under the hood, and deploy{" "}
-  <span className="font-semibold text-white">
-    real-time inference on edge devices
-  </span>
-  .
-</p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <span className="border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-xs text-white/60">
-                BANGALORE, INDIA
-              </span>
-
-              <span className="border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-xs text-white/60">
-                AI & ML
-              </span>
-
-              <span className="border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-xs text-white/60">
-                COMPUTER VISION
-              </span>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              {/* 4. VIEW PROJECTS */}
-              <a
-                href="#work"
-                className="bg-blue-500 px-6 py-3 font-mono text-sm font-semibold text-black transition hover:-translate-y-1 hover:bg-blue-400"
-              >
-                VIEW PROJECTS →
-              </a>
-
-              <a
-                href="mailto:zakwan1292003@gmail.com"
-                className="border border-white/10 px-6 py-3 font-mono text-sm transition hover:border-cyan-300 hover:text-cyan-300"
-              >
-                GET IN TOUCH
-              </a>
-            </div>
+        {/* Hero layout: portrait left, animated introduction right */}
+        <div className="relative grid min-h-[calc(100svh-68px)] w-full grid-cols-1 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)]">
+          {/* LEFT: Cinematic portrait */}
+          <div className="relative z-10 min-h-[min(68vh,760px)] w-full sm:min-h-[min(74vh,820px)] lg:min-h-[calc(100svh-68px)]">
+            <VisionHUD />
           </div>
 
-          {/* Right — Vision HUD */}
-          <div className="lg:-mr-6 lg:-mt-28">
-            <VisionHUD />
+          {/* RIGHT: Animated introduction */}
+          <div className="relative z-10 flex min-w-0 items-center px-6 pb-20 pt-10 sm:px-10 sm:pb-24 lg:min-h-[calc(100svh-68px)] lg:px-8 lg:py-16 xl:px-10 2xl:px-14">
+            <HeroIntro />
           </div>
         </div>
       </section>
