@@ -79,7 +79,7 @@ const projects = [
   },
   {
     number: "04",
-    title: "PRJ_96 — Manhole & Open Drain Detection",
+    title: "Manhole Detection",
     image: "/images/prj96-manhole.png",
     description:
       "An AI-assisted smart-city hazard reporting prototype for manhole and open-drain risks. Its FastAPI detection endpoint processes uploaded images using YOLO inference, incorporates geographic coordinates and foot-traffic density into reports, calculates a repair-priority score, and returns annotated detections for review.",
