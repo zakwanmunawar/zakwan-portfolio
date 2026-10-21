@@ -22,93 +22,58 @@ function VisionScene({
   const box = useRef<THREE.Group>(null);
 
   useFrame((state) => {
+    const time = state.clock.elapsedTime;
     const progress = progressRef.current;
 
     if (group.current) {
-      group.current.rotation.y =
-        Math.sin(state.clock.elapsedTime * 0.25) * 0.08;
-
-      group.current.rotation.x =
-        Math.sin(state.clock.elapsedTime * 0.18) * 0.025;
+      group.current.rotation.y = Math.sin(time * 0.25) * 0.08;
+      group.current.rotation.x = Math.sin(time * 0.18) * 0.025;
     }
 
     if (target.current) {
-      target.current.rotation.z =
-        state.clock.elapsedTime * 0.35;
-
-      const targetScale =
-        1 +
-        Math.sin(state.clock.elapsedTime * 2) * 0.05;
-
-      target.current.scale.setScalar(targetScale);
+      target.current.rotation.z = time * 0.35;
+      target.current.scale.setScalar(
+        1 + Math.sin(time * 2) * 0.05
+      );
     }
 
     if (box.current) {
-      /*
-       * The detection box gradually shifts as the
-       * user progresses through the section.
-       */
-      const x = THREE.MathUtils.lerp(
-        -0.7,
-        0.7,
-        progress
+      const x = THREE.MathUtils.lerp(-0.7, 0.7, progress);
+      const y = THREE.MathUtils.lerp(0.3, -0.3, progress);
+
+      box.current.position.x = THREE.MathUtils.lerp(
+        box.current.position.x,
+        x,
+        0.05
       );
 
-      const y = THREE.MathUtils.lerp(
-        0.3,
-        -0.3,
-        progress
+      box.current.position.y = THREE.MathUtils.lerp(
+        box.current.position.y,
+        y,
+        0.05
       );
-
-      box.current.position.x =
-        THREE.MathUtils.lerp(
-          box.current.position.x,
-          x,
-          0.05
-        );
-
-      box.current.position.y =
-        THREE.MathUtils.lerp(
-          box.current.position.y,
-          y,
-          0.05
-        );
     }
   });
 
   return (
     <group ref={group}>
-      {/* Main horizontal grid */}
-      <gridHelper
-        args={[8, 16, "#17343a", "#0b1c20"]}
-      />
+      {/* Spatial grids */}
+      <gridHelper args={[8, 16, "#234d83", "#12233d"]} />
 
-      {/* Vertical spatial grid */}
       <gridHelper
-        args={[8, 16, "#17343a", "#0b1c20"]}
+        args={[8, 16, "#234d83", "#12233d"]}
         rotation={[Math.PI / 2, 0, 0]}
       />
 
-      {/* Detection box */}
+      {/* Detection volume */}
       <group ref={box}>
         <lineSegments>
           <edgesGeometry
-            args={[
-              new THREE.BoxGeometry(
-                2.8,
-                2.8,
-                2.8
-              ),
-            ]}
+            args={[new THREE.BoxGeometry(2.8, 2.8, 2.8)]}
           />
-
-          {/* BLUE DETECTION BOX */}
-          <lineBasicMaterial
-            color="#3b82f6"
-          />
+          <lineBasicMaterial color="#3b82f6" />
         </lineSegments>
 
-        {/* Detection points */}
         {[
           [-1.4, 1.4, 1.4],
           [1.4, 1.4, 1.4],
@@ -121,155 +86,111 @@ function VisionScene({
         ].map((position, index) => (
           <mesh
             key={index}
-            position={
-              position as [
-                number,
-                number,
-                number
-              ]
-            }
+            position={position as [number, number, number]}
           >
-            <sphereGeometry
-              args={[0.045, 12, 12]}
-            />
-
-            <meshBasicMaterial
-              color="#67e8f9"
-            />
+            <sphereGeometry args={[0.045, 12, 12]} />
+            <meshBasicMaterial color="#93c5fd" />
           </mesh>
         ))}
       </group>
 
-      {/* Central targeting system */}
+      {/* Targeting reticle */}
       <group ref={target}>
-        {/* Outer reticle */}
         <mesh>
-          <torusGeometry
-            args={[
-              0.55,
-              0.025,
-              12,
-              48,
-            ]}
-          />
-
-          <meshBasicMaterial
-            color="#67e8f9"
-          />
+          <torusGeometry args={[0.55, 0.025, 12, 48]} />
+          <meshBasicMaterial color="#93e7ff" />
         </mesh>
 
-        {/* Inner reticle */}
         <mesh>
-          <ringGeometry
-            args={[
-              0.12,
-              0.16,
-              32,
-            ]}
-          />
-
-          <meshBasicMaterial
-            color="#67e8f9"
-          />
+          <ringGeometry args={[0.12, 0.16, 32]} />
+          <meshBasicMaterial color="#93e7ff" />
         </mesh>
 
-        {/* Horizontal targeting line */}
         <mesh>
-          <boxGeometry
-            args={[
-              1.5,
-              0.012,
-              0.012,
-            ]}
-          />
-
-          <meshBasicMaterial
-            color="#67e8f9"
-          />
+          <boxGeometry args={[1.5, 0.012, 0.012]} />
+          <meshBasicMaterial color="#93e7ff" />
         </mesh>
 
-        {/* Vertical targeting line */}
         <mesh>
-          <boxGeometry
-            args={[
-              0.012,
-              1.5,
-              0.012,
-            ]}
-          />
-
-          <meshBasicMaterial
-            color="#67e8f9"
-          />
+          <boxGeometry args={[0.012, 1.5, 0.012]} />
+          <meshBasicMaterial color="#93e7ff" />
         </mesh>
       </group>
     </group>
   );
 }
 
-function getVisionState(
-  progress: number
-): VisionState {
-  if (progress < 0.25) {
-    return "SCANNING";
-  }
-
-  if (progress < 0.5) {
-    return "TARGET_ACQUIRED";
-  }
-
-  if (progress < 0.75) {
-    return "TRACKING";
-  }
-
+function getVisionState(progress: number): VisionState {
+  if (progress < 0.25) return "SCANNING";
+  if (progress < 0.5) return "TARGET_ACQUIRED";
+  if (progress < 0.75) return "TRACKING";
   return "SYSTEM_ONLINE";
 }
 
 export default function VisionCore3D() {
-  const sectionRef =
-    useRef<HTMLDivElement>(null);
-
+  const sectionRef = useRef<HTMLElement>(null);
   const progressRef = useRef(0);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: [
-      "start end",
-      "end start",
-    ],
+    offset: ["start end", "end start"],
   });
 
   const [visionState, setVisionState] =
     useState<VisionState>("SCANNING");
 
   useEffect(() => {
-    const unsubscribe =
-      scrollYProgress.on("change", (value) => {
-        progressRef.current = value;
+    return scrollYProgress.on("change", (value) => {
+      progressRef.current = value;
 
-        const nextState =
-          getVisionState(value);
+      const nextState = getVisionState(value);
 
-        setVisionState((current) =>
-          current === nextState
-            ? current
-            : nextState
-        );
-      });
-
-    return unsubscribe;
+      setVisionState((current) =>
+        current === nextState ? current : nextState
+      );
+    });
   }, [scrollYProgress]);
 
   return (
     <section
       ref={sectionRef}
-      className="px-6 py-20 sm:py-28"
+      id="vision-core"
+      className="relative isolate overflow-hidden border-t border-blue-300/10 px-6 py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-7xl">
+      {/* Ambient blue lighting — same visual language as the YOLO section */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_85%_90%,rgba(37,99,235,0.20),transparent_48%),radial-gradient(ellipse_at_12%_10%,rgba(37,99,235,0.09),transparent_42%),linear-gradient(180deg,#0a1020_0%,#080b13_55%,#08090a_100%)]"
+      />
 
-        {/* 3D container */}
-        <div className="relative h-[420px] w-full overflow-hidden border border-white/10 bg-[radial-gradient(circle_at_50%_0%,rgba(34,211,238,0.12),rgba(5,7,8,0.96)_58%),linear-gradient(180deg,#07090c_0%,#050708_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.28)] sm:h-[500px]">
+      <div className="relative mx-auto max-w-7xl">
+        {/* Section introduction */}
+        <div className="mb-10 max-w-3xl">
+          <h2 className="font-mono text-4xl font-bold leading-tight tracking-tight text-[#F2F3F5] sm:text-5xl lg:text-6xl">
+            VISION CORE
+            <br />
+            <span className="text-blue-500">SPATIAL DETECTION</span>
+          </h2>
 
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+            Explore how a computer vision system can represent an
+            object in three-dimensional space. The wireframe illustrates
+            a detection volume, while the central reticle marks a target
+            reference point. Rotate the scene to explore the spatial
+            layout and watch the visualization respond as you scroll.
+          </p>
+
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[10px] tracking-[0.12em] text-blue-100/80 sm:text-xs">
+            <span>3D SPATIAL VIEW</span>
+            <span className="text-white/25">/</span>
+            <span>OBJECT LOCALIZATION</span>
+            <span className="text-white/25">/</span>
+            <span>INTERACTIVE MODEL</span>
+          </div>
+        </div>
+
+        {/* 3D visualization panel — sharp corners, blue ambient glow */}
+        <div className="relative h-[420px] w-full overflow-hidden border border-blue-300/20 bg-[radial-gradient(ellipse_at_75%_15%,rgba(37,99,235,0.16),transparent_48%),radial-gradient(ellipse_at_20%_100%,rgba(37,99,235,0.12),transparent_50%),linear-gradient(145deg,rgba(12,22,42,0.97),rgba(5,8,14,0.98))] shadow-[0_0_70px_rgba(37,99,235,0.08)] sm:h-[500px] lg:h-[560px]">
           <Canvas
             camera={{
               position: [5, 4, 5],
@@ -277,82 +198,54 @@ export default function VisionCore3D() {
             }}
             dpr={[1, 1.5]}
           >
-            <ambientLight intensity={0.4} />
-
-            <VisionScene
-              progressRef={progressRef}
-            />
+            <ambientLight intensity={0.6} />
+            <VisionScene progressRef={progressRef} />
 
             <OrbitControls
               enableZoom={false}
               enablePan={false}
               autoRotate
               autoRotateSpeed={0.35}
-              minPolarAngle={
-                Math.PI / 2.5
-              }
-              maxPolarAngle={
-                Math.PI / 1.8
-              }
+              minPolarAngle={Math.PI / 2.5}
+              maxPolarAngle={Math.PI / 1.8}
             />
           </Canvas>
 
           {/* HUD overlay */}
           <div className="pointer-events-none absolute inset-0">
-
-            {/* Top-left corners */}
-            <div className="absolute left-4 top-4 h-7 w-7 border-l border-t border-cyan-300/70" />
-
-            {/* Top-right corners */}
-            <div className="absolute right-4 top-4 h-7 w-7 border-r border-t border-cyan-300/70" />
-
-            {/* Bottom-left corners */}
-            <div className="absolute bottom-4 left-4 h-7 w-7 border-b border-l border-cyan-300/70" />
-
-            {/* Bottom-right corners */}
-            <div className="absolute bottom-4 right-4 h-7 w-7 border-b border-r border-cyan-300/70" />
+            {/* Sharp corner brackets */}
+            <div className="absolute left-4 top-4 h-7 w-7 border-l border-t border-blue-300/70" />
+            <div className="absolute right-4 top-4 h-7 w-7 border-r border-t border-blue-300/70" />
+            <div className="absolute bottom-4 left-4 h-7 w-7 border-b border-l border-blue-300/70" />
+            <div className="absolute bottom-4 right-4 h-7 w-7 border-b border-r border-blue-300/70" />
 
             {/* System identification */}
-            <div className="absolute left-6 top-6 font-mono text-[9px] leading-4 text-cyan-300/80">
+            <div className="absolute left-7 top-7 font-mono text-[10px] leading-5 text-blue-100/85 sm:text-xs">
               <div>VISION_CORE</div>
-              <div>SPATIAL_DETECTION</div>
+              <div className="text-white/50">SPATIAL_DETECTION</div>
             </div>
 
             {/* Live state */}
-            <div className="absolute right-6 top-6 border border-cyan-300/20 bg-black/40 px-3 py-2 font-mono text-[9px] text-cyan-300">
-              <div className="text-white/30">
-                SYSTEM_STATE
-              </div>
-
-              <div className="mt-1">
-                {visionState}
-              </div>
+            <div className="absolute right-7 top-7 border border-blue-300/25 bg-[#080d18]/80 px-4 py-3 font-mono text-[10px] text-blue-200 sm:text-xs">
+              <div className="text-white/50">SYSTEM STATE</div>
+              <div className="mt-2 text-blue-300">{visionState}</div>
             </div>
 
             {/* Bottom telemetry */}
-            <div className="absolute bottom-6 left-6 font-mono text-[9px] leading-5 text-white/40">
-              <div>
-                SYSTEM: ONLINE
-              </div>
-
-              <div>
-                MODE: 3D_ANALYSIS
-              </div>
-
-              <div className="text-cyan-300/60">
-                TARGET: LOCKED
-              </div>
+            <div className="absolute bottom-7 left-7 space-y-1 font-mono text-[10px] leading-5 text-white/55 sm:text-xs">
+              <div>SYSTEM: ONLINE</div>
+              <div>MODE: 3D_ANALYSIS</div>
+              <div className="text-blue-200">TARGET: LOCKED</div>
             </div>
 
-            {/* Model */}
-            <div className="absolute bottom-6 right-6 font-mono text-[9px] text-blue-500">
+            <div className="absolute bottom-7 right-7 font-mono text-[10px] text-blue-300 sm:text-xs">
               YOLO26
             </div>
-          </div>
 
-          {/* State indicator */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[8px] tracking-[0.25em] text-white/25">
-            REAL-TIME VISION CORE
+            {/* Center-bottom caption */}
+            <div className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-mono text-[9px] tracking-[0.2em] text-white/40 sm:block">
+              REAL-TIME VISION CORE
+            </div>
           </div>
         </div>
       </div>

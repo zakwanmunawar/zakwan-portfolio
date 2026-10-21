@@ -27,7 +27,10 @@ export default function HeroIntro() {
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+      transition: {
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1],
+      },
     },
   };
 
@@ -53,7 +56,9 @@ export default function HeroIntro() {
         className="font-sans text-[clamp(3.15rem,6.05vw,6.35rem)] font-semibold leading-[0.88] tracking-[-0.075em] text-[#F2F3F5]"
       >
         <span className="block whitespace-nowrap">MOHAMMED</span>
-        <span className="mt-2 block whitespace-nowrap">ZAKWAN M<span className="text-blue-400">.</span></span>
+        <span className="mt-2 block whitespace-nowrap">
+          ZAKWAN M<span className="text-blue-400">.</span>
+        </span>
       </motion.h1>
 
       <motion.div
@@ -70,9 +75,15 @@ export default function HeroIntro() {
         variants={itemVariants}
         className="mt-6 max-w-[620px] text-[16px] leading-7 text-white/65 sm:text-lg sm:leading-8"
       >
-        I build <span className="font-medium text-white">object detection systems from scratch</span>,
-        study how modern vision models work under the hood, and deploy{" "}
-        <span className="font-medium text-white">real-time inference on edge devices</span>.
+        I build{" "}
+        <span className="font-medium text-white">
+          object detection systems from scratch
+        </span>
+        , study how modern vision models work under the hood, and deploy{" "}
+        <span className="font-medium text-white">
+          real-time inference on edge devices
+        </span>
+        .
       </motion.p>
 
       <motion.div
@@ -90,24 +101,44 @@ export default function HeroIntro() {
         ))}
       </motion.div>
 
+      {/* Hero action buttons */}
       <motion.div
         variants={itemVariants}
         className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4"
       >
+        {/* VIEW PROJECTS — white sweep from left to right */}
         <a
           href="#work"
-          className="group inline-flex min-h-12 items-center gap-4 border border-blue-400/40 bg-blue-500 px-5 py-3 font-mono text-[10px] font-bold tracking-[0.13em] text-[#06080D] transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090A] sm:px-6 sm:text-xs"
+          className="group relative isolate inline-flex min-h-12 items-center justify-center gap-4 overflow-hidden rounded-lg border border-blue-400/50 bg-blue-500 px-5 py-3 font-mono text-[10px] font-bold tracking-[0.13em] text-[#06080D] transition-all duration-300 hover:-translate-y-0.5 hover:border-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090A] sm:px-6 sm:text-xs"
         >
-          VIEW PROJECTS
-          <span className="transition-transform duration-300 group-hover:translate-x-1">⟶</span>
+          {/* Animated white layer */}
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 -translate-x-full rounded-[inherit] bg-white transition-transform duration-500 ease-out group-hover:translate-x-0 group-focus-visible:translate-x-0 motion-reduce:transition-none"
+          />
+
+          <span className="relative z-10">
+            VIEW PROJECTS
+          </span>
+
+          <span
+            aria-hidden="true"
+            className="relative z-10 transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
+          >
+            ⟶
+          </span>
         </a>
 
+        {/* GET IN TOUCH — subtle outlined button */}
         <a
           href="mailto:zakwan1292003@gmail.com"
-          className="group inline-flex min-h-12 items-center gap-3 border border-white/15 px-5 py-3 font-mono text-[10px] tracking-[0.13em] text-white/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-200/50 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090A] sm:px-6 sm:text-xs"
+          className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-lg border border-white/15 px-5 py-3 font-mono text-[10px] tracking-[0.13em] text-white/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-200/50 hover:bg-white/[0.03] hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090A] sm:px-6 sm:text-xs"
         >
           GET IN TOUCH
-          <span className="text-cyan-200/75 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+
+          <span className="text-cyan-200/75 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+            ↗
+          </span>
         </a>
       </motion.div>
 
@@ -119,8 +150,12 @@ export default function HeroIntro() {
           <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
           BUILDING IN PUBLIC
         </span>
+
         <span className="h-3 w-px bg-white/10" />
-        <span className="min-w-0">DETECTION · TRACKING · EDGE AI</span>
+
+        <span className="min-w-0">
+          DETECTION · TRACKING · EDGE AI
+        </span>
       </motion.div>
     </motion.div>
   );

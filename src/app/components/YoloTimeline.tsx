@@ -167,6 +167,7 @@ export default function YoloTimeline() {
   const [selectedVersion, setSelectedVersion] =
     useState<string | null>(null);
 
+  // Convert vertical wheel input into horizontal timeline scrolling.
   useEffect(() => {
     const container = timelineRef.current;
 
@@ -176,22 +177,13 @@ export default function YoloTimeline() {
       const maxScrollLeft =
         container.scrollWidth - container.clientWidth;
 
-      const currentScrollLeft =
-        container.scrollLeft;
-
-      const scrollingRight =
-        event.deltaY > 0;
-
-      const scrollingLeft =
-        event.deltaY < 0;
+      const currentScrollLeft = container.scrollLeft;
 
       const canScrollRight =
-        scrollingRight &&
-        currentScrollLeft < maxScrollLeft;
+        event.deltaY > 0 && currentScrollLeft < maxScrollLeft;
 
       const canScrollLeft =
-        scrollingLeft &&
-        currentScrollLeft > 0;
+        event.deltaY < 0 && currentScrollLeft > 0;
 
       if (canScrollRight || canScrollLeft) {
         event.preventDefault();
@@ -204,13 +196,11 @@ export default function YoloTimeline() {
     });
 
     return () => {
-      container.removeEventListener(
-        "wheel",
-        handleWheel
-      );
+      container.removeEventListener("wheel", handleWheel);
     };
   }, []);
 
+  // Close the modal with Escape.
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -221,45 +211,56 @@ export default function YoloTimeline() {
     window.addEventListener("keydown", handleEscape);
 
     return () => {
-      window.removeEventListener(
-        "keydown",
-        handleEscape
-      );
+      window.removeEventListener("keydown", handleEscape);
     };
   }, []);
 
   return (
     <section
       id="timeline"
-      className="relative overflow-hidden border-t border-white/10 px-6 py-32"
+      className="relative isolate overflow-hidden border-t border-white/10 bg-[#08090A] px-6 py-32"
     >
-      <div className="mx-auto max-w-7xl">
+      {/* Soft blue ambient background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background: `
+            radial-gradient(
+              ellipse at 82% 38%,
+              rgba(37, 99, 235, 0.28) 0%,
+              rgba(37, 99, 235, 0.16) 35%,
+              rgba(37, 99, 235, 0.06) 58%,
+              transparent 76%
+            ),
+            radial-gradient(
+              ellipse at 8% 76%,
+              rgba(59, 130, 246, 0.16) 0%,
+              rgba(59, 130, 246, 0.07) 38%,
+              transparent 65%
+            ),
+            radial-gradient(
+              ellipse at 50% 100%,
+              rgba(29, 78, 216, 0.12) 0%,
+              transparent 62%
+            )
+          `,
+        }}
+      />
 
-        {/* Section heading */}
+      <div className="mx-auto max-w-7xl">
+        {/* Section heading — simplified */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
             duration: 0.7,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="max-w-3xl"
         >
-          <p className="font-mono text-xs text-cyan-300">
-            01 // VISION EVOLUTION
-          </p>
-
-          <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 className="mt-0 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             YOLOv1
             <span className="text-blue-500">
               {" "}→{" "}
@@ -273,10 +274,9 @@ export default function YoloTimeline() {
           </p>
         </motion.div>
 
-        {/* Timeline */}
+        {/* Horizontal timeline */}
         <div className="relative mt-20">
-
-          <div className="absolute left-0 right-0 top-1/2 h-px bg-white/10" />
+          <div className="pointer-events-none absolute left-0 right-0 top-1/2 h-px bg-blue-300/10" />
 
           <div
             ref={timelineRef}
@@ -286,33 +286,37 @@ export default function YoloTimeline() {
               gap-10
               overflow-x-auto
               overscroll-x-contain
-              pb-8
-              pt-8
+              px-2
+              pb-10
+              pt-10
               [scrollbar-width:none]
               [&::-webkit-scrollbar]:hidden
             "
           >
             {yoloVersions.map((version, index) => {
               const isFirst = index === 0;
-              const isLast =
-                index === yoloVersions.length - 1;
-
+              const isLast = index === yoloVersions.length - 1;
               const data = yoloData[version];
 
               return (
                 <motion.button
                   key={version}
                   type="button"
-                  onClick={() =>
-                    setSelectedVersion(version)
-                  }
+                  onClick={() => setSelectedVersion(version)}
+                  whileHover={{ zIndex: 30 }}
                   className="
                     group
                     relative
-                    min-w-[150px]
+                    w-[188px]
+                    min-w-[188px]
                     shrink-0
                     cursor-pointer
                     text-left
+                    focus-visible:outline-none
+                    focus-visible:ring-2
+                    focus-visible:ring-blue-300/70
+                    focus-visible:ring-offset-4
+                    focus-visible:ring-offset-[#08090A]
                   "
                   initial={{
                     opacity: 0,
@@ -330,19 +334,11 @@ export default function YoloTimeline() {
                   }}
                   transition={{
                     duration: 0.5,
-                    delay: Math.min(
-                      index * 0.035,
-                      0.25
-                    ),
-                    ease: [
-                      0.22,
-                      1,
-                      0.36,
-                      1,
-                    ],
+                    delay: Math.min(index * 0.035, 0.25),
+                    ease: [0.22, 1, 0.36, 1],
                   }}
                 >
-                  {/* Node */}
+                  {/* Timeline node */}
                   <div className="relative z-10 flex justify-center">
                     <motion.div
                       className={`
@@ -355,84 +351,105 @@ export default function YoloTimeline() {
                         ${
                           isFirst || isLast
                             ? `
-                              border-blue-500
-                              bg-blue-500
-                              shadow-[0_0_18px_rgba(59,130,246,0.5)]
+                              border-blue-400
+                              bg-blue-400
+                              shadow-[0_0_18px_rgba(59,130,246,0.55)]
                             `
                             : `
                               border-cyan-300/50
-                              bg-[#08090a]
+                              bg-[#08090A]
+                              group-hover:border-blue-300
+                              group-hover:bg-blue-400/70
                             `
                         }
                       `}
-                      whileHover={{
-                        scale: 1.3,
-                      }}
+                      whileHover={{ scale: 1.3 }}
                     />
                   </div>
 
-                  {/* Card */}
+                  {/* Uniform square card with a visible hover zoom */}
                   <motion.div
-                    className={`
+                    className="
+                      relative
                       mt-8
+                      h-[174px]
+                      w-full
+                      origin-center
+                      transform-gpu
+                      overflow-hidden
                       border
+                      border-blue-300/20
+                      bg-[#08090A]/90
                       p-4
-                      transition-colors
+                      shadow-[inset_0_1px_0_rgba(147,197,253,0.06)]
+                      transition-[border-color,box-shadow]
                       duration-300
-                      ${
-                        isFirst || isLast
-                          ? `
-                            border-blue-500/40
-                            bg-blue-500/[0.04]
-                          `
-                          : `
-                            border-white/10
-                            bg-white/[0.02]
-                            group-hover:border-cyan-300/40
-                          `
-                      }
-                    `}
+                      group-hover:border-blue-300/80
+                      group-hover:shadow-[0_0_32px_rgba(37,99,235,0.28),inset_0_1px_0_rgba(147,197,253,0.16)]
+                    "
+                    style={{
+                      background:
+                        "radial-gradient(ellipse at 78% 0%, rgba(37,99,235,0.26) 0%, rgba(23,45,80,0.22) 34%, rgba(8,9,10,0.97) 78%)",
+                    }}
                     whileHover={{
-                      y: -6,
+                      scale: 1.12,
+                      y: -8,
+                      zIndex: 30,
                     }}
                     transition={{
                       type: "spring",
                       stiffness: 300,
-                      damping: 24,
+                      damping: 22,
                     }}
                   >
-                    <div className="font-mono text-[10px] text-white/30">
-                      {String(index + 1).padStart(
-                        2,
-                        "0"
-                      )}
-                    </div>
-
-                    <div className="mt-2 font-mono text-sm font-semibold">
-                      {version}
-                    </div>
-
+                    {/* Subtle blue light inside the card */}
                     <div
-                      className={`
-                        mt-2
-                        font-mono
-                        text-[9px]
-                        ${
-                          data.type === "IMPLEMENTED"
-                            ? "text-blue-500/70"
-                            : "text-cyan-300/50"
-                        }
-                      `}
-                    >
-                      {data.type}
-                    </div>
+                      aria-hidden="true"
+                      className="
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        -z-10
+                        bg-[radial-gradient(ellipse_at_80%_0%,rgba(59,130,246,0.16),transparent_62%)]
+                        opacity-80
+                        transition-opacity
+                        duration-300
+                        group-hover:opacity-100
+                      "
+                    />
 
-                    <div className="mt-1 font-mono text-[9px] text-white/30">
-                      {data.year}
-                    </div>
+                    <div className="relative z-10 flex h-full flex-col">
+                      <div className="font-mono text-[10px] text-white/40">
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
 
-                    <div className="mt-3 font-mono text-[8px] text-blue-500/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      CLICK TO EXPLORE →
+                      <div className="mt-2 font-mono text-sm font-semibold text-white/95">
+                        {version}
+                      </div>
+
+                      <div
+                        className={`
+                          mt-2
+                          font-mono
+                          text-[9px]
+                          tracking-[0.08em]
+                          ${
+                            data.type === "IMPLEMENTED"
+                              ? "text-blue-300/90"
+                              : "text-cyan-200/70"
+                          }
+                        `}
+                      >
+                        {data.type}
+                      </div>
+
+                      <div className="mt-1 font-mono text-[9px] text-white/40">
+                        {data.year}
+                      </div>
+
+                      <div className="mt-auto pt-2 font-mono text-[8px] tracking-[0.04em] text-blue-200/0 transition-colors duration-300 group-hover:text-blue-200/90">
+                        CLICK TO EXPLORE →
+                      </div>
                     </div>
                   </motion.div>
                 </motion.button>
@@ -441,21 +458,16 @@ export default function YoloTimeline() {
           </div>
         </div>
 
-        {/* Bottom statement */}
-        <div className="mt-10 flex flex-col justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
-          <p className="max-w-2xl font-mono text-sm leading-6 text-white/40">
+        {/* Bottom statement — secondary label removed */}
+        <div className="mt-10 border-t border-white/10 pt-8">
+          <p className="max-w-2xl font-mono text-sm leading-6 text-white/50">
             Not just using detection models — understanding how the
             architecture evolved.
           </p>
-
-          <div className="font-mono text-xs text-blue-500">
-            YOLO EVOLUTION // ARCHITECTURE → IMPLEMENTATION
-          </div>
         </div>
-
       </div>
 
-      {/* Detail modal */}
+      {/* Architecture detail modal */}
       <AnimatePresence>
         {selectedVersion && (
           <motion.div
@@ -471,18 +483,10 @@ export default function YoloTimeline() {
               backdrop-blur-sm
               sm:p-6
             "
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
-            exit={{
-              opacity: 0,
-            }}
-            onClick={() =>
-              setSelectedVersion(null)
-            }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedVersion(null)}
           >
             <motion.div
               className="
@@ -491,9 +495,10 @@ export default function YoloTimeline() {
                 max-w-5xl
                 overflow-y-auto
                 border
-                border-white/10
-                bg-[#08090a]
+                border-blue-300/20
+                bg-[#08090A]
                 p-6
+                shadow-[0_0_50px_rgba(37,99,235,0.12)]
                 sm:p-8
               "
               initial={{
@@ -511,17 +516,14 @@ export default function YoloTimeline() {
                 y: 20,
                 scale: 0.96,
               }}
-              onClick={(event) =>
-                event.stopPropagation()
-              }
+              onClick={(event) => event.stopPropagation()}
             >
               {(() => {
-                const data =
-                  yoloData[selectedVersion];
+                const data = yoloData[selectedVersion];
 
                 return (
                   <>
-                    {/* Header */}
+                    {/* Modal header */}
                     <div className="flex items-start justify-between gap-6">
                       <div>
                         <p
@@ -530,7 +532,7 @@ export default function YoloTimeline() {
                             text-xs
                             ${
                               data.type === "IMPLEMENTED"
-                                ? "text-blue-500"
+                                ? "text-blue-400"
                                 : "text-cyan-300"
                             }
                           `}
@@ -549,9 +551,7 @@ export default function YoloTimeline() {
 
                       <button
                         type="button"
-                        onClick={() =>
-                          setSelectedVersion(null)
-                        }
+                        onClick={() => setSelectedVersion(null)}
                         className="
                           border
                           border-white/10
@@ -561,8 +561,11 @@ export default function YoloTimeline() {
                           text-sm
                           text-white/50
                           transition
-                          hover:border-blue-500/50
+                          hover:border-blue-400/50
                           hover:text-white
+                          focus-visible:outline-none
+                          focus-visible:ring-2
+                          focus-visible:ring-blue-300/70
                         "
                       >
                         ESC
@@ -574,13 +577,13 @@ export default function YoloTimeline() {
                       {data.description}
                     </p>
 
-                    {/* Architecture */}
-                    <div className="mt-8 overflow-hidden border border-white/10 bg-black">
-                      <div className="border-b border-white/10 px-4 py-3 font-mono text-[10px] text-cyan-300/70">
+                    {/* Architecture image */}
+                    <div className="mt-8 overflow-hidden border border-blue-300/15 bg-black/60">
+                      <div className="border-b border-blue-300/10 px-4 py-3 font-mono text-[10px] text-blue-200/75">
                         ARCHITECTURE // {selectedVersion}
                       </div>
 
-                      <div className="flex min-h-[240px] items-center justify-center bg-black p-4 sm:min-h-[300px]">
+                      <div className="flex min-h-[240px] items-center justify-center bg-black/50 p-4 sm:min-h-[300px]">
                         <Image
                           src={data.image}
                           alt={`${selectedVersion} architecture`}
@@ -627,8 +630,16 @@ function InfoBox({
   value: string;
 }) {
   return (
-    <div className="border border-white/10 bg-white/[0.02] p-5">
-      <div className="font-mono text-[10px] text-cyan-300/50">
+    <div
+      className="
+        border
+        border-blue-300/15
+        bg-[radial-gradient(ellipse_at_80%_0%,rgba(37,99,235,0.12),rgba(8,9,10,0.96)_76%)]
+        p-5
+        shadow-[inset_0_1px_0_rgba(147,197,253,0.05)]
+      "
+    >
+      <div className="font-mono text-[10px] text-blue-200/60">
         {title}
       </div>
 

@@ -42,10 +42,31 @@ export default function Home() {
           }}
         />
 
-        {/* Ambient hero lighting */}
+        {/* Ambient hero lighting — brighter blue glow only at bottom-right */}
+<div
+  aria-hidden="true"
+  className="pointer-events-none absolute inset-0"
+  style={{
+    background: `
+      radial-gradient(
+        ellipse at 100% 100%,
+        rgba(37, 99, 235, 0.28) 0%,
+        rgba(37, 99, 235, 0.16) 20%,
+        rgba(37, 99, 235, 0.06) 38%,
+        transparent 58%
+      )
+    `,
+  }}
+/>
+
+        {/* New soft blue glow — bottom-right of hero */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_24%_42%,rgba(30,64,175,0.2),transparent_28%),radial-gradient(circle_at_72%_20%,rgba(8,15,28,0.75),transparent_34%)]"
+          className="pointer-events-none absolute -bottom-32 -right-32 z-0 h-[420px] w-[420px] rounded-full opacity-90 blur-3xl lg:-bottom-48 lg:-right-40 lg:h-[680px] lg:w-[680px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0.11) 32%, rgba(29, 78, 216, 0.04) 52%, transparent 72%)",
+          }}
         />
 
         {/* Hero layout: portrait left, animated introduction right */}

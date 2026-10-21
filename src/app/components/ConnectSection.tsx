@@ -1,214 +1,216 @@
+"use client";
+
+import { motion } from "motion/react";
+
+const contactLinks = [
+  {
+    title: "RESUME",
+    description: "View or download my latest CV.",
+    href: "/resume.pdf",
+    external: true,
+    featured: true,
+  },
+  {
+    title: "GITHUB",
+    description: "Explore my projects and source code.",
+    href: "https://github.com/zakwanmunawar",
+    external: true,
+    featured: false,
+  },
+  {
+    title: "LINKEDIN",
+    description: "Connect with me professionally.",
+    href: "https://www.linkedin.com/in/mohammed-zakwan-m/",
+    external: true,
+    featured: false,
+  },
+  {
+    title: "EMAIL",
+    description: "Get in touch about computer vision and AI.",
+    href: "mailto:zakwan1292003@gmail.com",
+    external: false,
+    featured: false,
+  },
+];
+
 export default function ConnectSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden border-t border-white/10 px-6 py-32"
+      className="relative isolate overflow-hidden border-t border-white/10 bg-[#08090A] px-6 py-24 sm:py-32"
     >
+      {/* Soft blue ambient lighting — matching YOLO and Stack */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background: `
+            radial-gradient(
+              ellipse at 82% 38%,
+              rgba(37, 99, 235, 0.28) 0%,
+              rgba(37, 99, 235, 0.16) 35%,
+              rgba(37, 99, 235, 0.06) 58%,
+              transparent 76%
+            ),
+            radial-gradient(
+              ellipse at 8% 76%,
+              rgba(59, 130, 246, 0.16) 0%,
+              rgba(59, 130, 246, 0.07) 38%,
+              transparent 65%
+            ),
+            radial-gradient(
+              ellipse at 50% 100%,
+              rgba(29, 78, 216, 0.12) 0%,
+              transparent 62%
+            )
+          `,
+        }}
+      />
+
       <div className="mx-auto max-w-7xl">
+        {/* Main layout: introduction left, contact cards right */}
+        <div className="grid items-center gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16 xl:gap-20">
+          {/* LEFT: Introduction */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative z-10 max-w-xl"
+          >
+            <h2 className="font-sans text-[clamp(2.7rem,5vw,4.5rem)] font-semibold leading-[0.98] tracking-[-0.065em] text-[#F2F3F5]">
+              LET&apos;S BUILD
+              <br />
+              <span className="text-blue-500">SOMETHING</span>
+            </h2>
 
-        {/* Header */}
-        <div className="max-w-3xl">
-          <p className="font-mono text-xs text-cyan-300">
-            05 // CONNECT
-          </p>
+            <p className="mt-7 max-w-lg text-lg leading-8 text-white/80 sm:text-xl sm:leading-9">
+              Interested in computer vision, AI systems, or building
+              something interesting together? Find me through the links
+              here.
+            </p>
 
-          <h2 className="mt-4 font-mono text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            LET&apos;S BUILD
-            <br />
-            <span className="text-blue-500">SOMETHING</span>
-          </h2>
-
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/50">
-            Interested in computer vision, AI systems, or building something
-            interesting together? Find me through the links below.
-          </p>
-        </div>
-
-        {/* Main panel */}
-        <div className="relative mt-16 overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015))]">
-
-          {/* HUD corners */}
-          <div className="absolute left-0 top-0 h-10 w-10 border-l border-t border-cyan-300/50" />
-          <div className="absolute right-0 top-0 h-10 w-10 border-r border-t border-cyan-300/50" />
-          <div className="absolute bottom-0 left-0 h-10 w-10 border-b border-l border-cyan-300/50" />
-          <div className="absolute bottom-0 right-0 h-10 w-10 border-b border-r border-cyan-300/50" />
-
-          <div className="grid lg:grid-cols-[1fr_1.4fr]">
-
-            {/* Identity */}
-            <div className="border-b border-white/10 p-8 lg:border-b-0 lg:border-r lg:p-12">
-
-              <p className="font-mono text-[10px] text-white/30">
-                ENGINEER_ID
-              </p>
-
-              <h3 className="mt-4 font-mono text-2xl font-bold">
-                MOHAMMED
-                <br />
-                ZAKWAN M.
+            {/* Professional details */}
+            <div className="mt-9 border-t border-white/10 pt-6">
+              <h3 className="font-mono text-sm font-semibold tracking-[0.08em] text-white">
+                MOHAMMED ZAKWAN M.
               </h3>
 
-              <p className="mt-5 font-mono text-xs leading-6 text-cyan-300/70">
-                COMPUTER VISION
-                <br />
-                ENGINEER IN TRAINING
+              <p className="mt-3 font-mono text-xs leading-6 text-blue-200/90 sm:text-sm">
+                COMPUTER VISION ENGINEER IN TRAINING
               </p>
 
-              <div className="mt-10 space-y-4 border-t border-white/10 pt-6">
-
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-white/30">
-                    LOCATION
-                  </span>
-
-                  <span className="font-mono text-xs text-white/60">
-                    BANGALORE, INDIA
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-white/30">
-                    DOMAIN
-                  </span>
-
-                  <span className="font-mono text-xs text-white/60">
-                    COMPUTER VISION
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] text-white/30">
-                    STATUS
-                  </span>
-
-                  <span className="flex items-center gap-2 font-mono text-xs text-blue-500">
-                    <span className="h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.7)]" />
-                    OPEN TO OPPORTUNITIES
-                  </span>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Links */}
-            <div className="p-8 lg:p-12">
-
-              <p className="font-mono text-[10px] text-white/30">
-                ACCESS_POINTS
+              <p className="mt-4 text-sm leading-6 text-white/65">
+                Bangalore, India
+                <span className="mx-3 text-white/25">/</span>
+                Computer Vision
               </p>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-
-                {/* Resume */}
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border border-blue-500/40 bg-[linear-gradient(180deg,rgba(37,99,235,0.11),rgba(37,99,235,0.04))] p-5 transition-all duration-300 hover:border-blue-500 hover:bg-[linear-gradient(180deg,rgba(37,99,235,0.16),rgba(37,99,235,0.06))]"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-blue-500">
-                      RESUME
-                    </span>
-
-                    <span className="font-mono text-xs text-blue-500 transition-transform duration-300 group-hover:translate-x-1">
-                      ↗
-                    </span>
-                  </div>
-
-                  <p className="mt-3 font-mono text-[10px] text-white/40">
-                    VIEW / DOWNLOAD CV
-                  </p>
-                </a>
-
-                {/* GitHub */}
-                <a
-                  href="https://github.com/zakwanmunawar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border border-white/10 p-5 transition-all duration-300 hover:border-cyan-300/40"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold">
-                      GITHUB
-                    </span>
-
-                    <span className="font-mono text-xs text-cyan-300 transition-transform duration-300 group-hover:translate-x-1">
-                      ↗
-                    </span>
-                  </div>
-
-                  <p className="mt-3 font-mono text-[10px] text-white/40">
-                    PROJECTS / SOURCE CODE
-                  </p>
-                </a>
-
-                {/* LinkedIn */}
-                <a
-                  href="https://www.linkedin.com/in/mohammed-zakwan-m/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border border-white/10 p-5 transition-all duration-300 hover:border-cyan-300/40"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold">
-                      LINKEDIN
-                    </span>
-
-                    <span className="font-mono text-xs text-cyan-300 transition-transform duration-300 group-hover:translate-x-1">
-                      ↗
-                    </span>
-                  </div>
-
-                  <p className="mt-3 font-mono text-[10px] text-white/40">
-                    PROFESSIONAL PROFILE
-                  </p>
-                </a>
-
-                {/* Email */}
-                <a
-                  href="mailto:zakwan1292003@gmail.com"
-                  className="group border border-white/10 p-5 transition-all duration-300 hover:border-cyan-300/40"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold">
-                      EMAIL
-                    </span>
-
-                    <span className="font-mono text-xs text-cyan-300 transition-transform duration-300 group-hover:translate-x-1">
-                      ↗
-                    </span>
-                  </div>
-
-                  <p className="mt-3 break-all font-mono text-[10px] text-white/40">
-                    zakwan1292003@gmail.com
-                  </p>
-                </a>
-
-              </div>
-
-              {/* System readout */}
-              <div className="mt-8 border-t border-white/10 pt-5 font-mono text-[9px] leading-5 text-white/25">
-                <div>GITHUB_CONNECTION: AVAILABLE</div>
-                <div>LINKEDIN_CONNECTION: AVAILABLE</div>
-                <div>RESUME_DATABASE: ONLINE</div>
-              </div>
-
             </div>
+          </motion.div>
+
+          {/* RIGHT: Four equal-sized access cards */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 [grid-auto-rows:minmax(160px,1fr)]">
+            {contactLinks.map((link, index) => (
+              <motion.a
+                key={link.title}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={
+                  link.external
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  scale: 1.035,
+                  y: -5,
+                  zIndex: 20,
+                }}
+                className={`
+                  group
+                  relative
+                  isolate
+                  flex
+                  h-full
+                  min-h-[160px]
+                  min-w-0
+                  flex-col
+                  justify-between
+                  overflow-hidden
+                  border
+                  p-6
+                  transition-colors
+                  duration-300
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-blue-300/70
+                  ${
+                    link.featured
+                      ? "border-blue-300/35 hover:border-blue-300/65"
+                      : "border-blue-200/15 hover:border-blue-300/45"
+                  }
+                `}
+                style={{
+                  transformOrigin: "center center",
+                  background: link.featured
+                    ? "radial-gradient(ellipse at 82% 0%, rgba(37,99,235,0.26) 0%, rgba(17,31,53,0.35) 36%, rgba(9,11,14,0.96) 80%)"
+                    : "radial-gradient(ellipse at 82% 0%, rgba(37,99,235,0.18) 0%, rgba(17,31,53,0.24) 36%, rgba(9,11,14,0.96) 80%)",
+                }}
+              >
+                {/* Soft blue illumination */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-20 -z-10 h-48 w-48 bg-blue-500/[0.07] blur-3xl transition-colors duration-500 group-hover:bg-blue-400/[0.15]"
+                />
+
+                {/* Subtle illuminated top edge */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/20 to-transparent transition-colors duration-300 group-hover:via-blue-300/60"
+                />
+
+                {/* Card title and arrow */}
+                <div className="relative flex items-center justify-between gap-4">
+                  <h3
+                    className={`font-mono text-sm font-bold tracking-[0.08em] transition-colors duration-300 group-hover:text-blue-200 ${
+                      link.featured
+                        ? "text-blue-300"
+                        : "text-white"
+                    }`}
+                  >
+                    {link.title}
+                  </h3>
+
+                  <span
+                    aria-hidden="true"
+                    className={`shrink-0 font-mono text-sm transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
+                      link.featured
+                        ? "text-blue-300"
+                        : "text-cyan-200/75"
+                    }`}
+                  >
+                    ↗
+                  </span>
+                </div>
+
+                {/* Card description */}
+                <p className="relative mt-6 max-w-[32ch] text-sm leading-6 text-white/75 transition-colors duration-300 group-hover:text-white">
+                  {link.description}
+                </p>
+              </motion.a>
+            ))}
           </div>
         </div>
-
-        {/* Footer statement */}
-        <div className="mt-10 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-          <p className="font-mono text-[10px] text-white/25">
-            MOHAMMED ZAKWAN M. // COMPUTER VISION
-          </p>
-
-          <p className="font-mono text-[10px] text-blue-500">
-            CONNECTION_READY
-          </p>
-        </div>
-
       </div>
     </section>
   );
