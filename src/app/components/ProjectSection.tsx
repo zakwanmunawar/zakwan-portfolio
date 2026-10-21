@@ -120,12 +120,13 @@ function ProjectCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       initial={{
-        x: stackOffsets[index],
-        y: 18,
-        scale: 0.88,
-        rotate: stackRotations[index],
-        zIndex: 40 - index,
-      }}
+  x: 0,
+  y: 24,
+  scale: 0.94,
+  rotate: 0,
+  opacity: 1,
+  zIndex: 40 - index,
+}}
       whileInView={{
         x: "0%",
         y: 0,
